@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chemistry Quiz Chapters 1–4</title>
+  <style>
+    body {font-family: Arial, sans-serif; background:#f9f9f9; margin:0; padding:0;}
+    header {background:#222; color:#fff; padding:1rem; text-align:center;}
+    section {padding:20px; margin:auto; max-width:900px;}
+    h2 {background:#444; color:#fff; padding:10px; border-radius:6px;}
+    .question {background:#fff; padding:15px; margin:15px 0; border-radius:6px; box-shadow:0 2px 4px rgba(0,0,0,0.1);}
+    .options label {display:block; margin:6px 0; cursor:pointer;}
+    button {background:#d4a017; color:#fff; padding:10px 16px; border:none; border-radius:6px; cursor:pointer; margin-top:10px;}
+    button:hover {background:#b8860b;}
+    .result {margin-top:15px; padding:10px; background:#e3f2fd; border-left:5px solid #2196f3;}
+    .timer {font-size:18px; font-weight:bold; color:#b71c1c; margin:10px 0;}
+    .answer {display:none; margin-top:10px; color:green; font-weight:bold;}
+    .explanation {display:none; margin-top:5px; font-size:14px; color:#444;}
+  </style>
+</head>
+<body>
+<header>
+  <h1>Chemistry Quiz (Chapters 1–4)</h1>
+  <p>Each quiz has 20 questions | Time Limit: 20 minutes</p>
+</header>
+
+<section>
+  <h2>Chapter 1: Some Basic Concepts of Chemistry</h2>
+  <div class="timer" id="timer1">20:00</div>
+  <form id="quiz1"></form>
+  <button onclick="submitQuiz('quiz1','result1',answers1);">Submit Quiz</button>
+  <div id="result1" class="result"></div>
+</section>
+
+<section>
+  <h2>Chapter 2: Structure of Atom</h2>
+  <div class="timer" id="timer2">20:00</div>
+  <form id="quiz2"></form>
+  <button onclick="submitQuiz('quiz2','result2',answers2);">Submit Quiz</button>
+  <div id="result2" class="result"></div>
+</section>
+
+<section>
+  <h2>Chapter 3: Classification of Elements</h2>
+  <div class="timer" id="timer3">20:00</div>
+  <form id="quiz3"></form>
+  <button onclick="submitQuiz('quiz3','result3',answers3);">Submit Quiz</button>
+  <div id="result3" class="result"></div>
+</section>
+
+<section>
+  <h2>Chapter 4: Chemical Bonding</h2>
+  <div class="timer" id="timer4">20:00</div>
+  <form id="quiz4"></form>
+  <button onclick="submitQuiz('quiz4','result4',answers4);">Submit Quiz</button>
+  <div id="result4" class="result"></div>
+</section>
+
+<script>
+/* ---------- Questions Data ---------- */
+const q1 = [
+  {q:"The mole concept is related to?", o:["Atomic mass","Number of particles","Volume","Density"], a:1, exp:"Mole measures the number of particles."},
+  {q:"1 mole contains how many entities?", o:["6.022×10^23","3.14×10^23","1×10^23","9×10^23"], a:0, exp:"Avogadro number = 6.022×10^23."},
+  {q:"Molar mass of H2O?", o:["18 g/mol","16 g/mol","20 g/mol","2 g/mol"], a:0, exp:"H(2) + O = 2+16 =18 g/mol."},
+  {q:"Percentage composition is based on?", o:["Mass","Volume","Moles","Density"], a:0, exp:"Mass % = (mass of element/mass of compound) ×100."},
+  {q:"Empirical formula gives?", o:["Actual number of atoms","Simplest ratio of atoms","Mass ratio","Volume ratio"], a:1, exp:"Simplest ratio of atoms in a compound."},
+  {q:"Limiting reagent determines?", o:["Maximum product","Reactant leftover","Reaction rate","Energy released"], a:0, exp:"Limiting reagent decides maximum product formed."},
+  {q:"Excess reagent remains because?", o:["React completely","React partially","Exceeds limiting reagent","Evaporates"], a:2, exp:"Excess reagent left after reaction."},
+  {q:"Chemical reaction is?", o:["Physical change","Process forming new substance","Mixing","Dissolving"], a:1, exp:"Reaction forms new substance."},
+  {q:"Concentration is measured in?", o:["mol/L","g","kg","mL"], a:0, exp:"Molarity = moles/volume (L)."},
+  {q:"Mole fraction always?", o:["<1","=1",">1","Variable"], a:0, exp:"Mole fraction <1, sum of all fractions =1."},
+  {q:"Stoichiometry is based on?", o:["Mass relation","Volume relation","Mole relation","All"], a:3, exp:"It relates mass, moles, and volumes."},
+  {q:"1 mole of gas at STP occupies?", o:["22.4 L","24 L","20 L","25 L"], a:0, exp:"STP molar volume = 22.4 L."},
+  {q:"Molarity vs Molality difference?", o:["Both same","Molality uses kg solvent","Molarity uses kg solvent","Molality uses L solution"], a:1, exp:"Molality = moles/kg solvent; Molarity = moles/L solution."},
+  {q:"Atomic mass unit (amu) is?", o:["1/12 of C12 atom","Mass of H","Mass of O","1/10 of C12"], a:0, exp:"1 amu = 1/12 mass of C12."},
+  {q:"Relative atomic mass is?", o:["Average mass/1 amu","Exact mass","Mass ratio","Molecular mass"], a:0, exp:"Weighted average relative to 1 amu."},
+  {q:"Relative molecular mass is?", o:["Sum of atomic masses","Product","Difference","None"], a:0, exp:"Sum of constituent atomic masses."},
+  {q:"Avogadro law relates?", o:["Volume & moles","Pressure & volume","Density & mass","Energy & moles"], a:0, exp:"V ∝ n at constant T,P."},
+  {q:"Gas constant R value?", o:["0.0821 L atm/mol K","8.31 J/mol K","Both","None"], a:2, exp:"R = 0.0821 L atm/mol K or 8.31 J/mol K."},
+  {q:"Limiting reagent concept applies to?", o:["All reactions","Only solids","Only gases","Only liquids"], a:0, exp:"Applies to all reactions."},
+  {q:"Mole concept helps in?", o:["Calculations","Theories","Structures","Equations"], a:0, exp:"It allows quantitative calculations in chemistry."}
+];
+
+const q2 = [
+  {q:"Electron discovered by?", o:["Rutherford","Thomson","Bohr","Mendeleev"], a:1, exp:"J.J. Thomson discovered electron."},
+  {q:"Proton discovered by?", o:["Goldstein","Chadwick","Rutherford","Bohr"], a:2, exp:"Rutherford discovered proton."},
+  {q:"Neutron discovered by?", o:["Rutherford","Chadwick","Bohr","Thomson"], a:1, exp:"Chadwick discovered neutron."},
+  {q:"Atomic number =?", o:["Protons","Neutrons","Electrons","Protons+Neutrons"], a:0, exp:"Number of protons."},
+  {q:"Mass number =?", o:["Protons+Neutrons","Protons","Electrons","Neutrons"], a:0, exp:"Protons + Neutrons."},
+  {q:"Isotopes differ in?", o:["Neutrons","Protons","Electrons","Atomic number"], a:0, exp:"Isotopes have same Z but different N."},
+  {q:"Isobars differ in?", o:["Mass","Atomic number","Electrons","Charge"], a:0, exp:"Isobars have same mass, different Z."},
+  {q:"Isotones differ in?", o:["Neutrons","Protons","Mass","Electrons"], a:0, exp:"Isotones have same N, different Z."},
+  {q:"Bohr model postulates?", o:["Energy levels","Electrons move in orbits","Quantized orbits","All"], a:3, exp:"All Bohr model postulates."},
+  {q:"Quantum number defines?", o:["Electron state","Proton state","Neutron state","Atom size"], a:0, exp:"Defines electron energy & location."},
+  {q:"Pauli exclusion principle?", o:["No 2 electrons same quantum numbers","Atoms combine","Neutrons repel","Protons attract"], a:0, exp:"No two electrons have same set of quantum numbers."},
+  {q:"Hund’s rule?", o:["Max unpaired electrons in degenerate orbitals","Electrons pair first","Atoms stable","Electrons repel"], a:0, exp:"Electrons fill orbitals to maximize unpaired electrons."},
+  {q:"Aufbau principle?", o:["Lowest energy orbitals filled first","Random filling","Electrons fill half orbitals","Bohr postulate"], a:0, exp:"Electrons occupy orbitals in increasing energy."},
+  {q:"Valency depends on?", o:["Electrons in outermost shell","Protons","Neutrons","Mass"], a:0, exp:"Valency = number of electrons to gain/lose."},
+  {q:"Cation formed by?", o:["Losing electron","Gaining electron","Neutrons","Protons"], a:0, exp:"Cations = loss of electron."},
+  {q:"Anion formed by?", o:["Gaining electron","Losing electron","Protons","Neutrons"], a:0, exp:"Anions = gain of electron."},
+  {q:"Electronic configuration of O?", o:["1s² 2s² 2p⁴","1s² 2s² 2p⁶","1s² 2s² 2p²","1s² 2p⁴"], a:0, exp:"Oxygen has 8 electrons."},
+  {q:"Atomic radius trend?", o:["Decreases across period","Increases across period","Random","None"], a:0, exp:"Atomic radius decreases across period due to effective nuclear charge."},
+  {q:"Ionization energy trend?", o:["Increases across period","Decreases","Random","None"], a:0, exp:"IE increases across period."}
+];
+
+const q3 = [
+  {q:"Periodic table arranged by?", o:["Atomic number","Atomic mass","Density","Valency"], a:0, exp:"Modern table arranged by Z."},
+  {q:"Group =?", o:["Vertical column","Horizontal row","Diagonal","Random"], a:0, exp:"Vertical column."},
+  {q:"Period =?", o:["Horizontal row","Vertical column","Diagonal","Random"], a:0, exp:"Horizontal row."},
+  {q:"Alkali metals in?", o:["Group 1","Group 2","Group 17","Group 18"], a:0, exp:"Group 1."},
+  {q:"Halogens in?", o:["Group 17","Group 1","Group 2","Group 18"], a:0, exp:"Group 17."},
+  {q:"Noble gases in?", o:["Group 18","Group 17","Group 1","Group 2"], a:0, exp:"Group 18."},
+  {q:"Electronegativity trend?", o:["Across period ↑","Across period ↓","Random","None"], a:0, exp:"Electronegativity increases across period."},
+  {q:"Metallic character?", o:["Across period ↓","Across period ↑","Random","None"], a:0, exp:"Metallic character decreases across period."},
+  {q:"Ionization energy?", o:["Across period ↑","Across period ↓","Random","None"], a:0, exp:"IE increases across period."},
+  {q:"Electron affinity?", o:["Across period ↑","Across period ↓","Random","None"], a:0, exp:"EA increases across period."},
+  {q:"Group 2 elements called?", o:["Alkaline earth metals","Alkali metals","Halogens","Noble gases"], a:0, exp:"Group 2 are alkaline earth metals."},
+  {q:"Transition elements?", o:["d-block","s-block","p-block","f-block"], a:0, exp:"d-block elements."},
+  {q:"Lanthanides?", o:["4f","5f","3d","2p"], a:0, exp:"Lanthanides = 4f."},
+  {q:"Actinides?", o:["5f","4f","3d","2p"], a:0, exp:"Actinides = 5f."},
+  {q:"Ionization energy vs period?", o:["Increases","Decreases","Random","None"], a:0, exp:"IE increases across period."},
+  {q:"Atomic radius vs group?", o:["Increases down","Decreases down","Random","None"], a:0, exp:"Atomic radius increases down group."},
+  {q:"Electron affinity of halogens?", o:["High","Low","Zero","None"], a:0, exp:"Halogens have high EA."},
+  {q:"Electronegativity of F?", o:["Highest","Lowest","Medium","None"], a:0, exp:"F has highest electronegativity."},
+  {q:"Metallic vs non-metallic?", o:["Across period metallic ↓","Across period metallic ↑","Random","None"], a:0, exp:"Metallic character decreases across period."},
+  {q:"Group 1 reactivity?", o:["Increases down","Decreases down","Random","None"], a:0, exp:"Reactivity of alkali metals increases down group."}
+];
+
+const q4 = [
+  {q:"Ionic bond formed by?", o:["Electron transfer","Electron sharing","Proton transfer","Neutron sharing"], a:0, exp:"Ionic bond = transfer of electron."},
+  {q:"Covalent bond formed by?", o:["Electron sharing","Electron transfer","Proton transfer","Neutron sharing"], a:0, exp:"Covalent = sharing electrons."},
+  {q:"Electronegativity difference for ionic?", o:[">1.7","<0.4","0.5-1.7","None"], a:0, exp:">1.7 indicates ionic."},
+  {q:"Electronegativity difference for covalent?", o:["<1.7",">1.7","0.5-2","None"], a:0, exp:"<1.7 indicates covalent."},
+  {q:"Coordinate bond?", o:["Both electrons from one atom","One electron each","Protons","Neutrons"], a:0, exp:"One atom donates both electrons."},
+  {q:"Hydrogen bond?", o:["Weak attraction","Strong bond","Covalent bond","Ionic bond"], a:0, exp:"H-bond is weak intermolecular attraction."},
+  {q:"Metallic bond?", o:["Electron sea model","Electron sharing","Electron transfer","Protons"], a:0, exp:"Metallic bond = delocalized electrons."},
+  {q:"Dipole moment?", o:["Polarity measure","Mass measure","Charge measure","Bond length"], a:0, exp:"Dipole moment indicates polarity."},
+  {q:"Bond energy?", o:["Energy to break bond","Energy to form bond","Energy to move electrons","Mass change"], a:0, exp:"Bond energy = energy to break bond."},
+  {q:"Bond length?", o:["Distance between nuclei","Electron distance","Mass distance","Charge distance"], a:0, exp:"Distance between nuclei."},
+  {q:"Ionic compounds?", o:["High melting/solubility","Low melting","Covalent","Metallic"], a:0, exp:"Ionic compounds have high melting & solubility."},
+  {q:"Covalent compounds?", o:["Low melting/solubility","High melting","Ionic","Metallic"], a:0, exp:"Covalent compounds low melting/solubility."},
+  {q:"Polar covalent?", o:["Unequal sharing","Equal sharing","Electron transfer","Proton transfer"], a:0, exp:"Unequal sharing causes polarity."},
+  {q:"Nonpolar covalent?", o:["Equal sharing","Unequal sharing","Electron transfer","Proton transfer"], a:0, exp:"Equal sharing = nonpolar."},
+  {q:"Intermolecular forces?", o:["Van der Waals","Ionic","Covalent","Metallic"], a:0, exp:"Weak forces between molecules."},
+  {q:"Covalent bond examples?", o:["H2, O2, Cl2","NaCl, KBr","MgO","Fe"], a:0, exp:"H2, O2, Cl2 are covalent."},
+  {q:"Ionic bond examples?", o:["NaCl, KBr","H2, O2","Cl2, F2","CO2"], a:0, exp:"NaCl, KBr are ionic."},
+  {q:"Coordinate bond example?", o:["NH4+","H2O","Cl2","O2"], a:0, exp:"NH4+ has coordinate bond."},
+  {q:"Hydrogen bond example?", o:["H2O, HF","NaCl","Cl2","CO2"], a:0, exp:"H2O, HF show H-bonding."},
+  {q:"Metallic bond example?", o:["Na, Cu, Fe","H2O","Cl2","CO2"], a:0, exp:"Na, Cu, Fe have metallic bonding."}
+];
+
+/* ---------- Answers ---------- */
+const answers1 = q1.map(x => x.a);
+const answers2 = q2.map(x => x.a);
+const answers3 = q3.map(x => x.a);
+const answers4 = q4.map(x => x.a);
+
+/* ---------- Insert Questions ---------- */
+function loadQuestions(qset, formId) {
+  const form = document.getElementById(formId);
+  qset.forEach((item, i) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.innerHTML = `<p><b>Q${i+1}.</b> ${item.q}</p>` +
+      item.o.map((opt, j) => `<label><input type='radio' name='${formId}q${i}' value='${j}'> ${opt}</label>`).join("") +
+      `<div class="answer">✅ Correct Answer: ${item.o[item.a]}</div>` +
+      `<div class="explanation">Explanation: ${item.exp}</div>` +
+      `<button type="button" onclick="showAnswer(this)">Show Answer</button>`;
+    form.appendChild(div);
+  });
+}
+loadQuestions(q1, "quiz1");
+loadQuestions(q2, "quiz2");
+loadQuestions(q3, "quiz3");
+loadQuestions(q4, "quiz4");
+
+/* ---------- Submit & Evaluate ---------- */
+function submitQuiz(formId, resId, ansArr) {
+  const form = document.getElementById(formId);
+  let score = 0, out = "";
+  ansArr.forEach((ans, i) => {
+    const chosen = form.querySelector(`input[name='${formId}q${i}']:checked`);
+    if (chosen && parseInt(chosen.value) === ans) {
+      score++;
+      out += `<p>Q${i+1}: ✅ Correct (${qAns(formId)[i].exp})</p>`;
+    } else {
+      out += `<p>Q${i+1}: ❌ Wrong. Correct: ${qAns(formId)[i].o[ans]} | ${qAns(formId)[i].exp}</p>`;
+    }
+  });
+  document.getElementById(resId).innerHTML = `<div class='result'><b>Score: ${score}/${ansArr.length}</b><br>${out}</div>`;
+}
+function qAns(formId) {
+  if (formId === "quiz1") return q1;
+  if (formId === "quiz2") return q2;
+  if (formId === "quiz3") return q3;
+  return q4;
+}
+
+/* ---------- Timer ---------- */
+function startTimer(duration, display) {
+  let timer = duration, minutes, seconds;
+  const interval = setInterval(() => {
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
+    display.textContent = (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+    if (--timer < 0) {
+      display.textContent = "Time Up!";
+      clearInterval(interval);
+      document.getElementById(display.id.replace("timer", "quiz")).querySelectorAll('input').forEach(input => input.disabled = true);
+    }
+  }, 1000);
+}
+startTimer(20 * 60, document.getElementById("timer1"));
+startTimer(20 * 60, document.getElementById("timer2"));
+startTimer(20 * 60, document.getElementById("timer3"));
+startTimer(20 * 60, document.getElementById("timer4"));
+
+/* ---------- Show Answer ---------- */
+function showAnswer(button) {
+  const questionDiv = button.parentElement;
+  questionDiv.querySelector('.answer').style.display = 'block';
+  questionDiv.querySelector('.explanation').style.display = 'block';
+  button.style.display = 'none';
+}
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEET Chemistry Quiz: Chapters 5–10</title>
+<style>
+  body { font-family: Arial, sans-serif; background:#f4f4f9; color:#333; padding:20px; }
+  h2 { color:#1a73e8; }
+  .question { background:#fff; padding:15px; margin-bottom:15px; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+  label { display:block; margin:5px 0; cursor:pointer; }
+  .answer, .explanation { display:none; margin-top:5px; padding:5px; border-left:3px solid #1a73e8; background:#eef3ff; }
+  button { margin-top:5px; background:#1a73e8; color:white; border:none; padding:5px 10px; border-radius:4px; cursor:pointer; }
+  button:hover { background:#155bb5; }
+  .result { background:#e0f7e0; padding:10px; border-radius:8px; margin-top:10px; }
+  #timer1, #timer2, #timer3, #timer4, #timer5, #timer6 { font-weight:bold; color:#d32f2f; }
+</style>
+</head>
+<body>
+
+<h1>NEET Chemistry Quiz: Chapters 5–10</h1>
+
+<!-- Timer -->
+<p>Timer: <span id="timer5"></span></p>
+
+<!-- Quiz Container -->
+<form id="quiz5"></form>
+<button onclick="submitQuiz('quiz5','res5',answers5)">Submit Chapter 5–10 Quiz</button>
+<div id="res5"></div>
+
+<script>
+/* ---------- Chapter 5–10 Questions ---------- */
+const q5to10 = [
+  // Chapter 5: States of Matter
+  {q:"Which state of matter has definite volume but no definite shape?", o:["Solid","Liquid","Gas","Plasma"], a:1, exp:"Liquids have definite volume but take the shape of the container."},
+  {q:"Which is highly compressible?", o:["Gas","Liquid","Solid","None"], a:0, exp:"Gases are highly compressible due to large intermolecular spaces."},
+  {q:"Kinetic energy in a solid?", o:["Vibrational","Translational","Rotational","None"], a:0, exp:"Particles vibrate about fixed positions."},
+  {q:"Gas pressure caused by?", o:["Collisions with walls","Particle weight","Molecular attraction","None"], a:0, exp:"Pressure = collisions of gas molecules with container walls."},
+  {q:"Boyle's law formula?", o:["P1V1=P2V2","V=RT","P/T=constant","PV=nRT"], a:0, exp:"At constant temperature, PV is constant."},
+  {q:"Charles' law?", o:["V ∝ T at constant P","P ∝ V","V ∝ 1/T","None"], a:0, exp:"Volume of gas ∝ Temperature at constant pressure."},
+  {q:"Avogadro's law?", o:["V ∝ n at constant P,T","V ∝ 1/n","P ∝ n","None"], a:0, exp:"Volume ∝ Number of moles of gas."},
+  {q:"Real gas vs ideal gas?", o:["Intermolecular forces exist","No forces","Volume negligible","Both"], a:0, exp:"Real gases have forces; ideal gases ignore them."},
+  {q:"Critical temperature?", o:["No liquefaction above this T","Freezing point","Boiling point","None"], a:0, exp:"Above critical temperature, gas cannot be liquefied."},
+  {q:"Viscosity depends on?", o:["Intermolecular forces","Density","Mass","Pressure"], a:0, exp:"Higher intermolecular forces increase viscosity."},
+  {q:"Diffusion fastest in?", o:["Gas","Liquid","Solid","Plasma"], a:0, exp:"Particles move fastest in gases."},
+  {q:"Effusion depends on?", o:["Molecular mass","Volume","Density","Pressure"], a:0, exp:"Rate ∝ 1/√M (Graham's law)."},
+  {q:"Surface tension?", o:["Cohesive forces at surface","Weight","Density","Viscosity"], a:0, exp:"Force acting on molecules at liquid surface."},
+  {q:"Capillary action?", o:["Adhesion + cohesion","Viscosity","Density","Surface energy"], a:0, exp:"Rise of liquid due to adhesion & cohesion."},
+  {q:"Liquids compressibility?", o:["Very low","High","Moderate","None"], a:0, exp:"Liquids are nearly incompressible."},
+  {q:"Gas expansion is?", o:["Unlimited","Limited","None","Random"], a:0, exp:"Gases expand to fill container."},
+  {q:"Diffusion of gases depends on?", o:["Temperature, mass","Pressure","Volume","None"], a:0, exp:"Higher T → faster diffusion; heavier molecules → slower diffusion."},
+  {q:"Ideal gas equation?", o:["PV=nRT","P+V=nR","PV/T=nR","V= nRT"], a:0, exp:"Standard ideal gas equation."},
+  {q:"Boiling point occurs when?", o:["Vapor pressure = external pressure","T fixed","Heat removed","None"], a:0, exp:"Boiling occurs when vapor pressure equals external pressure."},
+  {q:"Sublimation?", o:["Solid → Gas directly","Solid → Liquid","Gas → Liquid","Liquid → Solid"], a:0, exp:"Direct transition from solid to gas."},
+
+  // Chapter 6: Chemical Thermodynamics
+  {q:"First law of thermodynamics?", o:["ΔU=Q-W","ΔU=Q+W","Q=W","ΔU=W"], a:0, exp:"Energy change = heat added – work done by system."},
+  {q:"Exothermic reaction?", o:["Releases heat","Absorbs heat","No heat change","Random"], a:0, exp:"Heat is released to surroundings."},
+  {q:"Endothermic reaction?", o:["Absorbs heat","Releases heat","No heat change","Random"], a:0, exp:"Heat is absorbed from surroundings."},
+  {q:"Enthalpy change?", o:["ΔH = ΔU + PΔV","ΔH=PV","ΔH=Q-W","ΔH=Q+W"], a:0, exp:"ΔH = Heat at constant pressure."},
+  {q:"Entropy measure?", o:["Disorder","Energy","Temperature","Pressure"], a:0, exp:"Entropy measures randomness."},
+  {q:"Gibbs free energy?", o:["ΔG = ΔH - TΔS","ΔG=ΔH + TΔS","ΔG=Q-W","ΔG=PV"], a:0, exp:"Determines spontaneity of reaction."},
+  {q:"Spontaneous reaction?", o:["ΔG<0","ΔG>0","ΔG=0","Random"], a:0, exp:"Negative ΔG → spontaneous."},
+  {q:"Hess's law?", o:["ΔH total = sum of steps","ΔG=0","ΔS constant","Random"], a:0, exp:"Enthalpy change independent of path."},
+  {q:"Calorimetry measures?", o:["Heat change","Work done","Pressure","Entropy"], a:0, exp:"Measures energy exchange as heat."},
+  {q:"Standard enthalpy of formation?", o:["1 mol compound from elements","1 mol element","Random","None"], a:0, exp:"Energy to form 1 mol from elements in standard state."},
+  {q:"Heat capacity?", o:["Energy per ΔT","Energy per ΔP","Volume change","None"], a:0, exp:"Amount of heat needed to raise temperature."},
+  {q:"Specific heat?", o:["Heat per g per °C","Heat per mole","Energy per volume","None"], a:0, exp:"Energy required to raise 1 g by 1°C."},
+  {q:"Work done in expansion?", o:["PΔV","ΔU","ΔH","None"], a:0, exp:"Expansion work = pressure × change in volume."},
+  {q:"Internal energy?", o:["ΔU=Q+W","ΔU=PV","ΔU=ΔH","None"], a:0, exp:"Total energy of system including heat & work."},
+  {q:"Exothermic sign of ΔH?", o:["Negative","Positive","Zero","None"], a:0, exp:"Exothermic ΔH is negative."},
+  {q:"Endothermic sign of ΔH?", o:["Positive","Negative","Zero","None"], a:0, exp:"Endothermic ΔH is positive."},
+  {q:"Work done by system?", o:["Expansion = negative work","Compression = negative","None","Random"], a:0, exp:"Work done by system is negative if it loses energy."},
+  {q:"Gibbs for non-spontaneous?", o:["ΔG>0","ΔG<0","ΔG=0","None"], a:0, exp:"Positive ΔG → non-spontaneous."},
+  {q:"Entropy increases when?", o:["Disorder increases","Volume decreases","Temperature decreases","None"], a:0, exp:"Higher disorder increases entropy."},
+  {q:"Third law of thermodynamics?", o:["S → 0 at 0 K","ΔH=0","ΔG=0","Random"], a:0, exp:"Entropy approaches zero at absolute zero."},
+
+  // Chapter 7: Equilibrium
+  {q:"Chemical equilibrium?", o:["Rate fwd=rate rev","No reaction","All products","All reactants"], a:0, exp:"Dynamic equilibrium occurs when forward and reverse rates equal."},
+  {q:"Le Chatelier’s principle?", o:["System opposes change","All reactants formed","All products formed","None"], a:0, exp:"System adjusts to counteract imposed change."},
+  {q:"Equilibrium constant expression?", o:["Kc=[products]/[reactants]","Kc=[reactants]/[products]","Kc=PV","Kc=ΔG"], a:0, exp:"Concentration ratio of products to reactants."},
+  {q:"Kp vs Kc?", o:["Kp = Kc(RT)^Δn","Kp = Kc","Kp>Kc","None"], a:0, exp:"Gas equilibrium relation Kp depends on Δn."},
+  {q:"Effect of pressure?", o:["Shifts to side with fewer moles","More moles","None","Random"], a:0, exp:"System shifts toward fewer moles to reduce pressure."},
+  {q:"Effect of temperature?", o:["Exo shifts left if T↑","Endo shifts left","Random","None"], a:0, exp:"Temperature affects equilibrium direction depending on enthalpy."},
+  {q:"Catalyst effect?", o:["Rate ↑, position same","Rate ↓","Shifts left","Shifts right"], a:0, exp:"Catalyst speeds up reaction but doesn't shift equilibrium."},
+  {q:"Acid-base equilibrium?", o:["HA ↔ H⁺ + A⁻","H2O ↔ H⁺ + OH⁻","All","None"], a:0, exp:"Weak acids dissociate partially at equilibrium."},
+  {q:"Ionic product of water?", o:["[H⁺][OH⁻]=1×10⁻¹⁴","[H⁺]=[OH⁻]","Random","None"], a:0, exp:"At 25°C, Kw = 1×10⁻¹⁴."},
+  {q:"Degree of dissociation?", o:["α = fraction dissociated","Number of moles","Volume fraction","None"], a:0, exp:"Fraction of molecules that ionize."},
+  {q:"Solubility product?", o:["Ksp = [ions]","Kp","Kc","ΔG"], a:0, exp:"Equilibrium constant for sparingly soluble salts."},
+  {q:"Reaction quotient Q?", o:["Compare with K for direction","Always =K","Random","None"], a:0, exp:"Q<K → forward; Q>K → reverse."},
+  {q:"Common ion effect?", o:["Decreases solubility","Increases","No change","Random"], a:0, exp:"Addition of common ion decreases solubility."},
+  {q:"Buffer solution?", o:["Resists pH change","Changes pH quickly","Random","None"], a:0, exp:"Mixture of weak acid & salt maintains pH."},
+  {q:"Equilibrium shift by concentration?", o:["Shifts away from added substance","Random","None","All"], a:0, exp:"Increase in reactant shifts equilibrium toward products."},
+  {q:"Heterogeneous equilibrium?", o:["Different phases","Same phase","None","Random"], a:0, exp:"Reactants & products in different phases."},
+  {q:"Homogeneous equilibrium?", o:["All same phase","Different phases","None","Random"], a:0, exp:"Reactants & products in same phase."},
+  {q:"Kc unit?", o:["Depends on Δn","Always unitless","None","Random"], a:0, exp:"Unit depends on stoichiometry."},
+  {q:"Strong acid equilibrium?", o:["Completely dissociate","Partially dissociate","None","Random"], a:0, exp:"Strong acids dissociate completely in water."},
+  {q:"Weak base?", o:["Partially dissociate","Completely","None","Random"], a:0, exp:"Weak bases ionize partially."},
+
+  // Chapters 8–10 can be added similarly, but due to space, Chapters 5–7 are fully exemplified here. 
+  // You can continue the same structure for Chapters 8–10 (Electrochemistry, Chemical Kinetics, Surface Chemistry) with 20 questions each following this template.
+];
+
+/* ---------- Answers ---------- */
+const answers5 = q5to10.map(x => x.a);
+
+/* ---------- Insert Questions ---------- */
+function loadQuestions(qset, formId) {
+  const form = document.getElementById(formId);
+  qset.forEach((item, i) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.innerHTML = `<p><b>Q${i+1}.</b> ${item.q}</p>` +
+      item.o.map((opt, j) => `<label><input type='radio' name='${formId}q${i}' value='${j}'> ${opt}</label>`).join("") +
+      `<div class="answer">✅ Correct Answer: ${item.o[item.a]}</div>` +
+      `<div class="explanation">Explanation: ${item.exp}</div>` +
+      `<button type="button" onclick="showAnswer(this)">Show Answer</button>`;
+    form.appendChild(div);
+  });
+}
+loadQuestions(q5to10, "quiz5");
+
+/* ---------- Submit & Evaluate ---------- */
+function submitQuiz(formId, resId, ansArr) {
+  const form = document.getElementById(formId);
+  let score = 0, out = "";
+  ansArr.forEach((ans, i) => {
+    const chosen = form.querySelector(`input[name='${formId}q${i}']:checked`);
+    if (chosen && parseInt(chosen.value) === ans) {
+      score++;
+      out += `<p>Q${i+1}: ✅ Correct (${qAns(formId)[i].exp})</p>`;
+    } else {
+      out += `<p>Q${i+1}: ❌ Wrong. Correct: ${qAns(formId)[i].o[ans]} | ${qAns(formId)[i].exp}</p>`;
+    }
+  });
+  document.getElementById(resId).innerHTML = `<div class='result'><b>Score: ${score}/${ansArr.length}</b><br>${out}</div>`;
+}
+function qAns(formId) {
+  return q5to10;
+}
+
+/* ---------- Timer ---------- */
+function startTimer(duration, display) {
+  let timer = duration, minutes, seconds;
+  const interval = setInterval(() => {
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
+    display.textContent = (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+    if (--timer < 0) {
+      display.textContent = "Time Up!";
+      clearInterval(interval);
+      document.getElementById(display.id.replace("timer", "quiz")).querySelectorAll('input').forEach(input => input.disabled = true);
+    }
+  }, 1000);
+}
+startTimer(30 * 60, document.getElementById("timer5")); // 30-minute timer
+
+/* ---------- Show Answer ---------- */
+function showAnswer(button) {
+  const questionDiv = button.parentElement;
+  questionDiv.querySelector('.answer').style.display = 'block';
+  questionDiv.querySelector('.explanation').style.display = 'block';
+  button.style.display = 'none';
+}
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEET Chemistry Quiz: Chapters 8–9</title>
+<style>
+  body { font-family: Arial, sans-serif; background:#f9f9fc; color:#333; padding:20px; }
+  h2 { color:#1a73e8; }
+  .question { background:#fff; padding:15px; margin-bottom:15px; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+  label { display:block; margin:5px 0; cursor:pointer; }
+  .answer, .explanation { display:none; margin-top:5px; padding:5px; border-left:3px solid #1a73e8; background:#eef3ff; }
+  button { margin-top:5px; background:#1a73e8; color:white; border:none; padding:5px 10px; border-radius:4px; cursor:pointer; }
+  button:hover { background:#155bb5; }
+  .result { background:#e0f7e0; padding:10px; border-radius:8px; margin-top:10px; }
+</style>
+</head>
+<body>
+
+<h1>NEET Chemistry Quiz: Chapters 8–9</h1>
+
+<p>Timer: <span id="timer8"></span></p>
+
+<form id="quiz8"></form>
+<button onclick="submitQuiz('quiz8','res8',answers8)">Submit Quiz</button>
+<div id="res8"></div>
+
+<script>
+const q8to9 = [
+  /* ---------- Chapter 8: Electrochemistry ---------- */
+  {q:"Which electrode is positively charged in a galvanic cell?", o:["Cathode","Anode","Both","None"], a:0, exp:"Cathode is positive; reduction occurs at cathode."},
+  {q:"Anode reaction in electrolysis?", o:["Oxidation","Reduction","No reaction","Both"], a:0, exp:"Oxidation occurs at anode."},
+  {q:"Cathode reaction in electrolysis?", o:["Reduction","Oxidation","No reaction","Both"], a:0, exp:"Reduction occurs at cathode."},
+  {q:"Faraday's first law?", o:["Mass ∝ charge passed","Mass ∝ voltage","Current ∝ resistance","None"], a:0, exp:"Mass of substance deposited ∝ total charge."},
+  {q:"Faraday's second law?", o:["Mass ∝ eq. weight","Mass ∝ volume","Current ∝ time","None"], a:0, exp:"Mass deposited ∝ equivalent weight."},
+  {q:"Electrolytic cell vs galvanic cell?", o:["External power vs spontaneous","Spontaneous vs external","Both spontaneous","Both powered"], a:0, exp:"Electrolytic requires external source; galvanic is spontaneous."},
+  {q:"Standard electrode potential?", o:["E° measured vs SHE","Voltage vs battery","Pressure","None"], a:0, exp:"Measured against standard hydrogen electrode."},
+  {q:"Electrochemical series?", o:["Arranged by E° values","Arranged by moles","Arranged by pressure","None"], a:0, exp:"Series ranks metals by standard reduction potential."},
+  {q:"Nernst equation?", o:["E=E°-(0.0591/n)logQ","E=IR","V=IR","P=RT/V"], a:0, exp:"Relates cell potential to concentrations."},
+  {q:"Electroplating purpose?", o:["Coating metal","Generating electricity","Random","None"], a:0, exp:"Deposition of a metal layer on surface."},
+  {q:"Lead storage battery cathode?", o:["PbO2","Pb","PbSO4","H2SO4"], a:0, exp:"PbO2 acts as cathode."},
+  {q:"Primary cell example?", o:["Leclanché cell","Lead-acid battery","Ni-Cd battery","All"], a:0, exp:"Leclanché is a primary cell; non-rechargeable."},
+  {q:"Secondary cell example?", o:["Lead-acid battery","Leclanché","Dry cell","None"], a:0, exp:"Rechargeable battery."},
+  {q:"Electrolysis of water produces?", o:["H2 at cathode, O2 at anode","O2 at cathode","H2 at anode","None"], a:0, exp:"Hydrogen gas produced at cathode, oxygen at anode."},
+  {q:"Overpotential effect?", o:["Slows reaction","Speeds up","No effect","Random"], a:0, exp:"Extra voltage required for electrolysis."},
+  {q:"Conductance unit?", o:["Siemens","Ohm","Volt","Ampere"], a:0, exp:"Siemens (S) is unit of conductance."},
+  {q:"Molar conductivity?", o:["Conductivity per molar concentration","Mass per mole","Volume per mole","Random"], a:0, exp:"Λm = κ/c, where κ is conductivity."},
+  {q:"Electrolyte strength depends on?", o:["Ionization","Mass","Volume","Pressure"], a:0, exp:"Stronger electrolytes dissociate more completely."},
+  {q:"Salt bridge purpose?", o:["Maintain charge neutrality","Carry electrons","Generate electricity","None"], a:0, exp:"Completes circuit by ion migration."},
+  {q:"Electrochemical cell potential standard?", o:["Measured under standard conditions","Ambient only","Random","None"], a:0, exp:"Measured at 25°C, 1M, 1atm."},
+
+  /* ---------- Chapter 9: Chemical Kinetics ---------- */
+  {q:"Rate of reaction depends on?", o:["Concentration, temperature, catalyst","Volume only","Pressure only","Random"], a:0, exp:"Reaction rate affected by concentration, temperature, catalyst."},
+  {q:"Order of reaction?", o:["Sum of powers in rate law","Difference of powers","Moles only","Random"], a:0, exp:"Order = sum of exponents in rate equation."},
+  {q:"Zero order reaction unit of k?", o:["mol L⁻¹ s⁻¹","s⁻¹","L mol⁻¹ s⁻¹","None"], a:0, exp:"Rate = k; units mol L⁻¹ s⁻¹."},
+  {q:"First order reaction unit of k?", o:["s⁻¹","mol L⁻¹ s⁻¹","L mol⁻¹ s⁻¹","None"], a:0, exp:"Rate = k[A]; units s⁻¹."},
+  {q:"Half-life of first-order reaction?", o:["t1/2=0.693/k","t1/2=k","t1/2=1/k","None"], a:0, exp:"t1/2 = 0.693/k."},
+  {q:"Activation energy?", o:["Minimum energy for reaction","Energy released","None","Random"], a:0, exp:"Particles must overcome energy barrier to react."},
+  {q:"Arrhenius equation?", o:["k=Ae^(-Ea/RT)","k=IR","V=IR","P=RT/V"], a:0, exp:"Relates rate constant to temperature & activation energy."},
+  {q:"Catalyst effect?", o:["Lowers Ea","Increases Ea","No change","Random"], a:0, exp:"Catalyst lowers activation energy."},
+  {q:"Rate constant changes with?", o:["Temperature","Pressure only","Volume only","Random"], a:0, exp:"Rate constant increases with temperature."},
+  {q:"Collision theory?", o:["Reactions occur when molecules collide with proper energy & orientation","All molecules react instantly","Random","None"], a:0, exp:"Only effective collisions lead to reaction."},
+  {q:"Molecularity definition?", o:["Number of molecules colliding in elementary step","Order of overall reaction","Random","None"], a:0, exp:"Elementary step involves uni-, bi-, or termolecular collisions."},
+  {q:"Pseudo-first order reaction?", o:["Second-order reaction with one reactant in excess","First-order reaction","Zero-order","Random"], a:0, exp:"Second-order reaction behaves like first-order."},
+  {q:"Rate law for reaction aA+bB→C?", o:["Rate=k[A]^m[B]^n","Rate=k[A]^2","Rate=k[B]^2","Random"], a:0, exp:"Rate depends on concentrations raised to experimentally determined powers."},
+  {q:"Effect of temperature?", o:["Increases rate","Decreases rate","No effect","Random"], a:0, exp:"Higher T → more collisions → higher rate."},
+  {q:"Reaction mechanism?", o:["Sequence of elementary steps","Overall reaction only","Random","None"], a:0, exp:"Mechanism explains how reaction occurs stepwise."},
+  {q:"Rate-determining step?", o:["Slowest step","Fastest step","All equal","Random"], a:0, exp:"Slowest step controls overall reaction rate."},
+  {q:"Units of second-order rate constant?", o:["L mol⁻¹ s⁻¹","s⁻¹","mol L⁻¹ s⁻¹","Random"], a:0, exp:"Second-order: k units = L mol⁻¹ s⁻¹."},
+  {q:"Integrated rate law?", o:["Concentration vs time equation","Pressure vs volume","Random","None"], a:0, exp:"Relates concentration at any time to initial concentration & time."},
+  {q:"Catalyst does not?", o:["Change ΔG°","Change Ea","Speed up reaction","Random"], a:0, exp:"Catalyst does not alter thermodynamics, only kinetics."},
+  {q:"Enzyme is?", o:["Biological catalyst","Chemical reactant","Solvent","Random"], a:0, exp:"Enzymes accelerate biochemical reactions."}
+];
+
+const answers8 = q8to9.map(x => x.a);
+
+/* ---------- Insert Questions ---------- */
+function loadQuestions(qset, formId) {
+  const form = document.getElementById(formId);
+  qset.forEach((item, i) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.innerHTML = `<p><b>Q${i+1}.</b> ${item.q}</p>` +
+      item.o.map((opt, j) => `<label><input type='radio' name='${formId}q${i}' value='${j}'> ${opt}</label>`).join("") +
+      `<div class="answer">✅ Correct Answer: ${item.o[item.a]}</div>` +
+      `<div class="explanation">Explanation: ${item.exp}</div>` +
+      `<button type="button" onclick="showAnswer(this)">Show Answer</button>`;
+    form.appendChild(div);
+  });
+}
+loadQuestions(q8to9, "quiz8");
+
+/* ---------- Submit & Evaluate ---------- */
+function submitQuiz(formId, resId, ansArr) {
+  const form = document.getElementById(formId);
+  let score = 0, out = "";
+  ansArr.forEach((ans, i) => {
+    const chosen = form.querySelector(`input[name='${formId}q${i}']:checked`);
+    if (chosen && parseInt(chosen.value) === ans) score++;
+    out += `<p>Q${i+1}: ${chosen && parseInt(chosen.value)===ans?'✅ Correct':'❌ Wrong. Correct: '+qAns(formId)[i].o[ans]} | ${qAns(formId)[i].exp}</p>`;
+  });
+  document.getElementById(resId).innerHTML = `<div class='result'><b>Score: ${score}/${ansArr.length}</b><br>${out}</div>`;
+}
+function qAns(formId) { return q8to9; }
+
+/* ---------- Timer ---------- */
+function startTimer(duration, display) {
+  let timer = duration, minutes, seconds;
+  const interval = setInterval(() => {
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
+    display.textContent = (minutes<10?"0":"")+minutes+":"+(seconds<10?"0":"")+seconds;
+    if(--timer<0){ display.textContent="Time Up!"; clearInterval(interval); document.getElementById(display.id.replace("timer","quiz")).querySelectorAll('input').forEach(input=>input.disabled=true);}
+  },1000);
+}
+startTimer(30*60, document.getElementById("timer8"));
+
+/* ---------- Show Answer ---------- */
+function showAnswer(button) {
+  const questionDiv = button.parentElement;
+  questionDiv.querySelector('.answer').style.display='block';
+  questionDiv.querySelector('.explanation').style.display='block';
+  button.style.display='none';
+}
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEET Chemistry Quiz: Chapter 10 - Surface Chemistry</title>
+<style>
+  body { font-family: Arial, sans-serif; background:#f9f9fc; color:#333; padding:20px; }
+  h2 { color:#1a73e8; }
+  .question { background:#fff; padding:15px; margin-bottom:15px; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+  label { display:block; margin:5px 0; cursor:pointer; }
+  .answer, .explanation { display:none; margin-top:5px; padding:5px; border-left:3px solid #1a73e8; background:#eef3ff; }
+  button { margin-top:5px; background:#1a73e8; color:white; border:none; padding:5px 10px; border-radius:4px; cursor:pointer; }
+  button:hover { background:#155bb5; }
+  .result { background:#e0f7e0; padding:10px; border-radius:8px; margin-top:10px; }
+</style>
+</head>
+<body>
+
+<h1>NEET Chemistry Quiz: Chapter 10 – Surface Chemistry</h1>
+
+<p>Timer: <span id="timer10"></span></p>
+
+<form id="quiz10"></form>
+<button onclick="submitQuiz('quiz10','res10',answers10)">Submit Quiz</button>
+<div id="res10"></div>
+
+<script>
+const q10 = [
+  {q:"What is adsorption?", o:["Accumulation of molecules on surface","Dissolution","Reaction in bulk","None"], a:0, exp:"Adsorption is the accumulation of substances at the interface."},
+  {q:"Absorption differs from adsorption by?", o:["Bulk penetration","Surface phenomenon","Both same","Random"], a:0, exp:"Absorption involves entire bulk; adsorption occurs only on surface."},
+  {q:"Chemisorption involves?", o:["Chemical bonds","Physical forces","No bonding","Random"], a:0, exp:"Chemisorption involves formation of chemical bonds with surface."},
+  {q:"Physisorption involves?", o:["Van der Waals forces","Chemical bonds","Electron sharing","Random"], a:0, exp:"Weak physical forces like van der Waals interactions."},
+  {q:"Factors affecting adsorption?", o:["Temperature, pressure, surface area","Color","Volume","Random"], a:0, exp:"Adsorption increases with surface area and pressure, decreases with temperature for gases."},
+  {q:"Langmuir adsorption isotherm assumes?", o:["Monolayer adsorption","Multilayer","No adsorption","Random"], a:0, exp:"Adsorption occurs in a single layer."},
+  {q:"Freundlich adsorption isotherm?", o:["Multilayer and heterogeneous surface","Monolayer","No adsorption","Random"], a:0, exp:"Adsorption on heterogeneous surfaces with multilayers."},
+  {q:"Catalysis depends on?", o:["Surface area and active sites","Pressure only","Volume only","Random"], a:0, exp:"Catalytic reactions require active surface sites."},
+  {q:"Colloids are?", o:["Heterogeneous mixtures with particle size 1-1000nm","True solutions","Pure solids","Random"], a:0, exp:"Colloids have intermediate particle size between solution and suspension."},
+  {q:"Lyophilic colloids?", o:["Solvent-loving","Solvent-hating","Unstable","Random"], a:0, exp:"Particles interact strongly with the dispersion medium."},
+  {q:"Lyophobic colloids?", o:["Solvent-hating","Solvent-loving","Stable","Random"], a:0, exp:"Particles do not interact strongly with the medium; require stabilizers."},
+  {q:"Emulsion is?", o:["Liquid dispersed in another liquid","Solid in liquid","Gas in liquid","Random"], a:0, exp:"Emulsion is a type of colloid."},
+  {q:"Tyndall effect?", o:["Scattering of light by colloidal particles","Refraction","Reflection","Random"], a:0, exp:"Colloidal particles scatter light, making the beam visible."},
+  {q:"Coagulation means?", o:["Aggregation of colloid particles","Dispersion","Adsorption","Random"], a:0, exp:"Particles come together to form larger aggregates."},
+  {q:"Protective colloids?", o:["Prevent coagulation","Cause coagulation","React chemically","Random"], a:0, exp:"They stabilize lyophobic colloids."},
+  {q:"Electrophoresis?", o:["Movement of colloid under electric field","Reaction rate","Adsorption","Random"], a:0, exp:"Colloidal particles migrate under electric potential."},
+  {q:"Zeta potential indicates?", o:["Stability of colloids","Color","Viscosity","Random"], a:0, exp:"Higher zeta potential means more stability against coagulation."},
+  {q:"Applications of adsorption?", o:["Catalysis, purification, gas masks","Color only","Pressure only","Random"], a:0, exp:"Adsorption used widely in industry and purification."},
+  {q:"Catalyst deactivation due to?", o:["Poisoning and sintering","Heating","Cooling","Random"], a:0, exp:"Catalysts lose activity when active sites are blocked or particles fuse."},
+  {q:"Surface tension arises due to?", o:["Unbalanced forces at liquid surface","Gravity","Volume change","Random"], a:0, exp:"Molecules at surface experience inward cohesive forces."}
+];
+
+const answers10 = q10.map(x => x.a);
+
+/* ---------- Insert Questions ---------- */
+function loadQuestions(qset, formId) {
+  const form = document.getElementById(formId);
+  qset.forEach((item, i) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.innerHTML = `<p><b>Q${i+1}.</b> ${item.q}</p>` +
+      item.o.map((opt, j) => `<label><input type='radio' name='${formId}q${i}' value='${j}'> ${opt}</label>`).join("") +
+      `<div class="answer">✅ Correct Answer: ${item.o[item.a]}</div>` +
+      `<div class="explanation">Explanation: ${item.exp}</div>` +
+      `<button type="button" onclick="showAnswer(this)">Show Answer</button>`;
+    form.appendChild(div);
+  });
+}
+loadQuestions(q10, "quiz10");
+
+/* ---------- Submit & Evaluate ---------- */
+function submitQuiz(formId, resId, ansArr) {
+  const form = document.getElementById(formId);
+  let score = 0, out = "";
+  ansArr.forEach((ans, i) => {
+    const chosen = form.querySelector(`input[name='${formId}q${i}']:checked`);
+    if (chosen && parseInt(chosen.value) === ans) score++;
+    out += `<p>Q${i+1}: ${chosen && parseInt(chosen.value)===ans?'✅ Correct':'❌ Wrong. Correct: '+qAns(formId)[i].o[ans]} | ${qAns(formId)[i].exp}</p>`;
+  });
+  document.getElementById(resId).innerHTML = `<div class='result'><b>Score: ${score}/${ansArr.length}</b><br>${out}</div>`;
+}
+function qAns(formId) { return q10; }
+
+/* ---------- Timer ---------- */
+function startTimer(duration, display) {
+  let timer = duration, minutes, seconds;
+  const interval = setInterval(() => {
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
+    display.textContent = (minutes<10?"0":"")+minutes+":"+(seconds<10?"0":"")+seconds;
+    if(--timer<0){ display.textContent="Time Up!"; clearInterval(interval); document.getElementById(display.id.replace("timer","quiz")).querySelectorAll('input').forEach(input=>input.disabled=true);}
+  },1000);
+}
+startTimer(30*60, document.getElementById("timer10"));
+
+/* ---------- Show Answer ---------- */
+function showAnswer(button) {
+  const questionDiv = button.parentElement;
+  questionDiv.querySelector('.answer').style.display='block';
+  questionDiv.querySelector('.explanation').style.display='block';
+  button.style.display='none';
+}
+</script>
+</body>
+</html>

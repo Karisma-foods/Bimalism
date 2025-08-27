@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bimalism - Entrance Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #f5d142, #f39c12);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .container {
+      text-align: center;
+      color: #fff;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+      animation: slideDown 1.2s ease-in-out;
+    }
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      opacity: 0.9;
+    }
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+    .btn {
+      background: #fff;
+      color: #f39c12;
+      padding: 15px 40px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, background 0.3s ease;
+      animation: popIn 1.5s ease-in-out;
+    }
+    .btn:hover {
+      transform: scale(1.1);
+      background: #f1c40f;
+      color: #fff;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes popIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    footer {
+      margin-top: 50px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      animation: fadeIn 2s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to Bimalism</h1>
+    <p>Select Your Exam to Begin Your Journey</p>
+    <div class="buttons">
+      <button class="btn" onclick="location.href='neet.html'">NEET</button>
+      <button class="btn" onclick="location.href='jee.html'">JEE</button>
+    </div>
+    <footer>
+      Made with ❤️ by Aalif & Dharunesh | Inspired by Mr. Kageshwararao
+    </footer>
+  </div>
+</body>
+</html>

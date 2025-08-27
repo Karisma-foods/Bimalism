@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics Summary - NEET Preparation Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        
+        header {
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .back-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .physics-icon {
+            font-size: 3rem;
+            margin: 15px 0;
+        }
+        
+        .content {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 30px;
+        }
+        
+        @media (max-width: 900px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                order: -1;
+            }
+        }
+        
+        .main-content {
+            line-height: 1.6;
+        }
+        
+        .chapter {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f1f1f1;
+            transition: all 0.3s ease;
+        }
+        
+        .chapter:hover {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .chapter h2 {
+            color: #ff416c;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f1f1f1;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .chapter h2:hover {
+            color: #e91e63;
+        }
+        
+        .chapter h3 {
+            color: #2193b0;
+            margin: 15px 0 10px;
+        }
+        
+        .chapter ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .chapter li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .chapter li:before {
+            content: "•";
+            color: #ff416c;
+            position: absolute;
+            left: 0;
+        }
+        
+        .formula {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #6a11cb;
+            transition: transform 0.3s ease;
+        }
+        
+        .formula:hover {
+            transform: translateX(5px);
+        }
+        
+        .key-points {
+            background: #eef7ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #2193b0;
+        }
+        
+        .key-points h4 {
+            color: #2193b0;
+            margin-bottom: 10px;
+        }
+        
+        .sidebar {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            height: fit-content;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sidebar h3 {
+            color: #ff416c;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            text-align: center;
+        }
+        
+        .quick-links {
+            list-style-type: none;
+        }
+        
+        .quick-links li {
+            margin-bottom: 10px;
+        }
+        
+        .quick-links a {
+            display: block;
+            padding: 10px 15px;
+            background: white;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            border-left: 4px solid #6a11cb;
+        }
+        
+        .quick-links a:hover {
+            background: #6a11cb;
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .important-topics {
+            margin-top: 30px;
+        }
+        
+        .important-topics h4 {
+            color: #ff4b2b;
+            margin-bottom: 10px;
+        }
+        
+        .topic-list {
+            list-style-type: none;
+        }
+        
+        .topic-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #ddd;
+            display: flex;
+            align-items: center;
+        }
+        
+        .topic-list li:before {
+            content: "•";
+            color: #ff4b2b;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #f1f1f1;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-quiz {
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+        }
+        
+        .btn-home {
+            background: linear-gradient(to right, #38ef7d, #11998e);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div>
+                    <h1>NEET Preparation Hub</h1>
+                    <p class="subtitle">Physics Summary - Key Concepts for NEET Exam</p>
+                </div>
+                <button class="back-btn" onclick="window.location.href='neet.html'">
+                    <i class="fas fa-arrow-left"></i> Back to Subjects
+                </button>
+            </div>
+            <div class="physics-icon">
+                <i class="fas fa-atom"></i>
+            </div>
+        </header>
+        
+        <div class="content">
+            <div class="main-content">
+                <div class="chapter" id="ch1">
+                    <h2>1. Physical World and Measurement</h2>
+                    <p>Physics is the study of nature and its laws, encompassing fundamental forces like gravitational, electromagnetic, strong nuclear, and weak nuclear forces.</p>
+                    
+                    <div class="key-points">
+                        <h4>Key Concepts</h4>
+                        <ul>
+                            <li>Scope and excitement of physics</li>
+                            <li>Relationship between physics, technology, and society</li>
+                            <li>Fundamental forces: gravitational, electromagnetic, strong, weak</li>
+                            <li>Nature of physical laws and their universality</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Units and Measurements</h3>
+                    <p>The International System of Units (SI) includes seven base units: meter (length), kilogram (mass), second (time), ampere (current), kelvin (temperature), mole (amount of substance), and candela (luminous intensity).</p>
+                    
+                    <div class="formula">
+                        <p><strong>Dimensional Formula:</strong> Expresses a physical quantity in terms of fundamental dimensions (M, L, T).</p>
+                        <p>Example: Force = [M L T⁻²]</p>
+                    </div>
+                </div>
+                
+                <div class="chapter" id="ch2">
+                    <h2>2. Kinematics</h2>
+                    <p>Kinematics studies motion without considering its causes, focusing on parameters like displacement, velocity, and acceleration.</p>
+                    
+                    <h3>Motion in a Straight Line</h3>
+                    <p>Describes motion along a linear path with constant or varying acceleration.</p>
+                    
+                    <div class="formula">
+                        <p>v = u + at</p>
+                        <p>s = ut + ½at²</p>
+                        <p>v² = u² + 2as</p>
+                    </div>
+                    
+                    <h3>Motion in a Plane</h3>
+                    <p>Projectile motion involves motion under constant gravitational acceleration with initial velocity components.</p>
+                    
+                    <div class="formula">
+                        <p>Time of flight: T = 2u sinθ / g</p>
+                        <p>Maximum height: H = u² sin²θ / 2g</p>
+                        <p>Horizontal range: R = u² sin2θ / g</p>
+                    </div>
+                </div>
+                
+                <div class="chapter" id="ch3">
+                    <h2>3. Laws of Motion</h2>
+                    <p>Newton's laws are the cornerstone of classical mechanics, governing the behavior of objects under the influence of external forces.</p>
+                    
+                    <div class="key-points">
+                        <h4>Newton's Laws</h4>
+                        <ul>
+                            <li><strong>First Law:</strong> An object remains at rest or in uniform motion unless acted upon by an external force (Inertia).</li>
+                            <li><strong>Second Law:</strong> F = ma (Force = mass × acceleration).</li>
+                            <li><strong>Third Law:</strong> Every action has an equal and opposite reaction.</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Friction</h3>
+                    <p>Friction opposes relative motion between contacting surfaces, categorized as static or kinetic.</p>
+                    
+                    <div class="formula">
+                        <p>Static friction: f_s ≤ μ_s N</p>
+                        <p>Kinetic friction: f_k = μ_k N</p>
+                    </div>
+                </div>
+                
+                <div class="chapter" id="ch4">
+                    <h2>4. Work, Energy and Power</h2>
+                    <p>Work is the transfer of energy when a force causes displacement. Energy exists as kinetic or potential, and power measures the rate of work done.</p>
+                    
+                    <div class="formula">
+                        <p>Work: W = F ⋅ s = F s cosθ</p>
+                        <p>Kinetic energy: K = ½mv²</p>
+                        <p>Potential energy: U = mgh</p>
+                        <p>Power: P = W/t = F ⋅ v</p>
+                    </div>
+                    
+                    <h3>Conservation Laws</h3>
+                    <p>The law of conservation of energy states that energy cannot be created or destroyed, only transformed between forms (kinetic, potential, etc.).</p>
+                </div>
+                
+                <div class="chapter" id="ch5">
+                    <h2>5. Motion of System of Particles and Rigid Body</h2>
+                    <p>Studies the motion of multiple particles or rigid bodies, focusing on center of mass and rotational dynamics.</p>
+                    
+                    <div class="key-points">
+                        <h4>Key Concepts</h4>
+                        <ul>
+                            <li>Center of mass and its motion</li>
+                            <li>Moment of inertia and torque</li>
+                            <li>Angular momentum and its conservation</li>
+                            <li>Rotational kinematics and dynamics</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="formula">
+                        <p>Torque: τ = r × F</p>
+                        <p>Angular momentum: L = Iω</p>
+                        <p>Rotational kinetic energy: K = ½Iω²</p>
+                    </div>
+                </div>
+                
+                <div class="chapter" id="ch6">
+                    <h2>6. Gravitation</h2>
+                    <p>Gravitation governs the attractive force between masses, described by Newton's universal law of gravitation.</p>
+                    
+                    <div class="formula">
+                        <p>Gravitational force: F = GMm/r²</p>
+                        <p>Gravitational potential energy: U = -GMm/r</p>
+                        <p>Escape velocity: v_e = √(2GM/r)</p>
+                    </div>
+                    
+                    <h3>Kepler's Laws</h3>
+                    <ul>
+                        <li><strong>First Law:</strong> Planets move in elliptical orbits with the Sun at one focus.</li>
+                        <li><strong>Second Law:</strong> Equal areas are swept in equal times.</li>
+                        <li><strong>Third Law:</strong> T² ∝ r³ (Period squared proportional to radius cubed).</li>
+                    </ul>
+                </div>
+                
+                <div class="chapter" id="ch7">
+                    <h2>7. Properties of Bulk Matter</h2>
+                    <p>Explores mechanical properties of solids and fluids, including elasticity, viscosity, and surface tension.</p>
+                    
+                    <h3>Mechanical Properties of Solids</h3>
+                    <div class="formula">
+                        <p>Young’s modulus: E = stress/strain</p>
+                        <p>Stress = F/A, Strain = ΔL/L</p>
+                    </div>
+                    
+                    <h3>Mechanical Properties of Fluids</h3>
+                    <div class="formula">
+                        <p>Pressure: P = F/A</p>
+                        <p>Buoyant force: F_b = ρVg (Archimedes’ principle)</p>
+                    </div>
+                </div>
+                
+                <div class="chapter" id="ch8">
+                    <h2>8. Thermodynamics</h2>
+                    <p>Thermodynamics deals with heat, work, and energy transfer in systems.</p>
+                    
+                    <div class="key-points">
+                        <h4>Laws of Thermodynamics</h4>
+                        <ul>
+                            <li><strong>Zeroth Law:</strong> Thermal equilibrium defines temperature.</li>
+                            <li><strong>First Law:</strong> ΔU = Q - W (Change in internal energy = heat added - work done).</li>
+                            <li><strong>Second Law:</strong> Entropy of an isolated system always increases.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="chapter" id="ch9">
+                    <h2>9. Behavior of Perfect Gas and Kinetic Theory</h2>
+                    <p>Describes the behavior of ideal gases and the kinetic theory of gases.</p>
+                    
+                    <div class="formula">
+                        <p>Ideal gas law: PV = nRT</p>
+                        <p>Kinetic energy of gas: KE = 3/2 kT (per molecule)</p>
+                    </div>
+                </div>
+                
+                <div class="chapter" id="ch10">
+                    <h2>10. Oscillations and Waves</h2>
+                    <p>Studies periodic motion (oscillations) and wave propagation.</p>
+                    
+                    <div class="formula">
+                        <p>Simple harmonic motion: F = -kx</p>
+                        <p>Wave speed: v = fλ</p>
+                        <p>Time period: T = 2π√(m/k) for a spring</p>
+                    </div>
+                </div>
+                
+                <div class="actions">
+                    <a href="py-quiz.html?chapter=1" class="btn btn-quiz">
+                        <i class="fas fa-brain"></i> Take Physics Quiz
+                    </a>
+                    <a href="neet.html" class="btn btn-home">
+                        <i class="fas fa-home"></i> Back to Main Hub
+                    </a>
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <h3>Quick Navigation</h3>
+                <ul class="quick-links">
+                    <li><a href="#ch1"><i class="fas fa-book"></i> Physical World & Measurement</a></li>
+                    <li><a href="#ch2"><i class="fas fa-book"></i> Kinematics</a></li>
+                    <li><a href="#ch3"><i class="fas fa-book"></i> Laws of Motion</a></li>
+                    <li><a href="#ch4"><i class="fas fa-book"></i> Work, Energy & Power</a></li>
+                    <li><a href="#ch5"><i class="fas fa-book"></i> Motion of System of Particles</a></li>
+                    <li><a href="#ch6"><i class="fas fa-book"></i> Gravitation</a></li>
+                    <li><a href="#ch7"><i class="fas fa-book"></i> Properties of Bulk Matter</a></li>
+                    <li><a href="#ch8"><i class="fas fa-book"></i> Thermodynamics</a></li>
+                    <li><a href="#ch9"><i class="fas fa-book"></i> Behavior of Perfect Gas</a></li>
+                    <li><a href="#ch10"><i class="fas fa-book"></i> Oscillations & Waves</a></li>
+                </ul>
+                
+                <div class="important-topics">
+                    <h4>Most Important Topics for NEET</h4>
+                    <ul class="topic-list">
+                        <li>Electrostatics</li>
+                        <li>Current Electricity</li>
+                        <li>Magnetic Effects of Current</li>
+                        <li>Electromagnetic Induction</li>
+                        <li>Optics</li>
+                        <li>Modern Physics</li>
+                        <li>Mechanics</li>
+                        <li>Thermodynamics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2025 NEET Preparation Hub | Physics Summary Page</p>
+            <p>Comprehensive study material for NEET exam preparation</p>
+        </footer>
+    </div>
+
+<script>
+    // Smooth scroll for sidebar navigation
+    document.querySelectorAll('.quick-links a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+
+    // Toggle chapter content visibility
+    document.querySelectorAll('.chapter h2').forEach(header => {
+        header.addEventListener('click', function() {
+            const chapterContent = this.nextElementSibling;
+            if (chapterContent && chapterContent.style.display !== 'none') {
+                chapterContent.style.display = 'none';
+            } else {
+                chapterContent.style.display = 'block';
+            }
+        });
+    });
+
+    // Animation for page elements
+    document.addEventListener('DOMContentLoaded', function() {
+        const chapters = document.querySelectorAll('.chapter');
+        chapters.forEach((chapter, index) => {
+            chapter.style.opacity = "0";
+            chapter.style.transform = "translateY(20px)";
+            setTimeout(() => {
+                chapter.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+                chapter.style.opacity = "1";
+                chapter.style.transform = "translateY(0)";
+            }, 200 * index);
+        });
+
+        // Dynamic chapter navigation based on URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const chapter = urlParams.get('chapter');
+        if (chapter) {
+            const targetChapter = document.getElementById(`ch${chapter}`);
+            if (targetChapter) {
+                targetChapter.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                targetChapter.style.background = '#f0f0f0';
+                setTimeout(() => {
+                    targetChapter.style.transition = 'background 1s ease';
+                    targetChapter.style.background = 'transparent';
+                }, 2000);
+            }
+        }
+    });
+
+    // Back button navigation
+    function goBack() {
+        window.location.href = "neet.html";
+    }
+</script>
+</body>
+</html>

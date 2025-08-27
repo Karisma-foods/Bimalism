@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEET Chemistry Summary</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #4CAF50;
+      --primary-dark: #2E7D32;
+      --primary-light: #C8E6C9;
+      --secondary: #00BCD4;
+      --text: #333;
+      --text-light: #666;
+      --background: #f1f8e9;
+      --card-bg: #ffffff;
+      --shadow: 0 4px 12px rgba(0,0,0,0.08);
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      text-align: center;
+      padding: 1.2rem;
+      font-size: 1.6rem;
+      font-weight: bold;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .container {
+      display: flex;
+      min-height: calc(100vh - 130px);
+    }
+    
+    nav {
+      width: 280px;
+      background: var(--primary-light);
+      height: 100%;
+      overflow-y: auto;
+      padding: 1.5rem 1rem;
+      position: sticky;
+      top: 76px;
+      border-right: 2px solid var(--primary);
+      transition: var(--transition);
+    }
+    
+    nav h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .chapter-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    
+    nav a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--text);
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      transition: var(--transition);
+      font-weight: 500;
+      gap: 10px;
+    }
+    
+    nav a:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateX(5px);
+    }
+    
+    nav a.active {
+      background: var(--primary);
+      color: white;
+    }
+    
+    nav a i {
+      font-size: 1.1rem;
+      width: 24px;
+    }
+    
+    main {
+      flex: 1;
+      padding: 2rem;
+      overflow-y: auto;
+    }
+    
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    
+    .back-button:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    
+    section {
+      margin-bottom: 2.5rem;
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border-left: 5px solid var(--primary);
+    }
+    
+    section:hover {
+      box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+    }
+    
+    section h2 {
+      color: var(--primary-dark);
+      margin-bottom: 1.2rem;
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    section h2 i {
+      font-size: 1.5rem;
+    }
+    
+    section p {
+      line-height: 1.8;
+      text-align: justify;
+      color: var(--text-light);
+    }
+    
+    .key-points {
+      background: var(--primary-light);
+      padding: 1.2rem;
+      border-radius: 12px;
+      margin-top: 1.2rem;
+    }
+    
+    .key-points h3 {
+      color: var(--primary-dark);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .key-points ul {
+      padding-left: 1.5rem;
+    }
+    
+    .key-points li {
+      margin-bottom: 0.5rem;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 1.2rem;
+      background: var(--primary-light);
+      border-top: 2px solid var(--primary);
+      font-weight: 600;
+      color: var(--text);
+    }
+    
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      z-index: 99;
+    }
+    
+    .scroll-top:hover {
+      background: var(--primary-dark);
+      transform: translateY(-5px);
+    }
+    
+    @media (max-width: 992px) {
+      .container {
+        flex-direction: column;
+      }
+      
+      nav {
+        width: 100%;
+        height: auto;
+        position: static;
+        border-right: none;
+        border-bottom: 2px solid var(--primary);
+      }
+      
+      .chapter-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 10px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      header {
+        font-size: 1.3rem;
+        padding: 1rem;
+      }
+      
+      main {
+        padding: 1.5rem;
+      }
+      
+      section {
+        padding: 1.5rem;
+      }
+      
+      .chapter-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <i class="fas fa-flask"></i>
+    <h1>NEET Chemistry Summaries (Class 11 )</h1>
+  </header>
+  <div class="container">
+    <nav>
+      <h2><i class="fas fa-book"></i> Chapters</h2>
+      <div class="chapter-list">
+        <a href="#ch1" class="active"><i class="fas fa-1"></i> Some Basic Concepts</a>
+        <a href="#ch2"><i class="fas fa-2"></i> Structure of Atom</a>
+        <a href="#ch3"><i class="fas fa-3"></i> Classification of Elements</a>
+        <a href="#ch4"><i class="fas fa-4"></i> Chemical Bonding</a>
+        <a href="#ch5"><i class="fas fa-5"></i> States of Matter</a>
+        <a href="#ch6"><i class="fas fa-6"></i> Thermodynamics</a>
+        <a href="#ch7"><i class="fas fa-7"></i> Equilibrium</a>
+        <a href="#ch8"><i class="fas fa-8"></i> Redox Reactions</a>
+        <a href="#ch9"><i class="fas fa-9"></i> Hydrogen</a>
+        <a href="#ch10"><i class="fas fa-0"></i> s-Block Elements</a>
+        <a href="#ch11"><i class="fas fa-atom"></i> p-Block Elements</a>
+        <a href="#ch12"><i class="fas fa-cubes"></i> Organic Chemistry</a>
+        <a href="#ch13"><i class="fas fa-oil-well"></i> Hydrocarbons</a>
+        <a href="#ch14"><i class="fas fa-vial"></i> Environmental Chemistry</a>
+        <a href="#ch15"><i class="fas fa-solid"></i> Solid State</a>
+        <a href="#ch16"><i class="fas fa-tint"></i> Solutions</a>
+        <a href="#ch17"><i class="fas fa-battery-full"></i> Electrochemistry</a>
+        <a href="#ch18"><i class="fas fa-gauge-high"></i> Chemical Kinetics</a>
+        <a href="#ch19"><i class="fas fa-square"></i> Surface Chemistry</a>
+        <a href="#ch20"><i class="fas fa-cube"></i> p-Block Elements II</a>
+        <a href="#ch21"><i class="fas fa-cube"></i> d & f Block Elements</a>
+        <a href="#ch22"><i class="fas fa-ring"></i> Coordination Compounds</a>
+        <a href="#ch23"><i class="fas fa-pills"></i> Haloalkanes & Haloarenes</a>
+        <a href="#ch24"><i class="fas fa-wine-bottle"></i> Alcohols, Phenols</a>
+        <a href="#ch25"><i class="fas fa-poo"></i> Biomolecules</a>
+      </div>
+    </nav>
+    <main>
+      <a href="#" class="back-button" id="backButton">
+        <i class="fas fa-arrow-left"></i> Go Back
+      </a>
+      
+      <section id="ch1">
+        <h2><i class="fas fa-ruler"></i> Chapter 1: Some Basic Concepts of Chemistry</h2>
+        <p>Chemistry is the science of molecules and their transformations. This chapter deals with the importance of chemistry, properties of matter, laws of chemical combination, Dalton's atomic theory, atomic and molecular masses, mole concept, percentage composition, stoichiometry and calculations based on stoichiometry.</p>
+        
+        <div class="key-points">
+          <h3><i class="fas fa-star"></i> Key Points</h3>
+          <ul>
+            <li>Laws of chemical combination</li>
+            <li>Dalton's atomic theory</li>
+            <li>Atomic and molecular masses</li>
+            <li>Mole concept and molar mass</li>
+            <li>Stoichiometry and stoichiometric calculations</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ch2">
+        <h2><i class="fas fa-atom"></i> Chapter 2: Structure of Atom</h2>
+        <p>This chapter covers discovery of subatomic particles, atomic models, atomic number, isotopes and isobars. Thomson's model, Rutherford's model, Bohr's model, quantum mechanical model of atom. Concepts of orbitals, quantum numbers, shapes of s, p and d orbitals, Aufbau principle, Pauli exclusion principle and Hund's rule, electronic configuration of atoms.</p>
+        
+        <div class="key-points">
+          <h3><i class="fas fa-star"></i> Key Points</h3>
+          <ul>
+            <li>Atomic models</li>
+            <li>Quantum mechanical model</li>
+            <li>Quantum numbers</li>
+            <li>Electronic configuration</li>
+            <li>Aufbau principle, Pauli exclusion, Hund's rule</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ch3">
+        <h2><i class="fas fa-table"></i> Chapter 3: Classification of Elements and Periodicity in Properties</h2>
+        <p>This chapter discusses significance of classification, brief history of development of periodic table, modern periodic law and present form of periodic table, periodic trends in properties of elements - atomic radii, ionic radii, ionization enthalpy, electron gain enthalpy, electronegativity, valency.</p>
+        
+        <div class="key-points">
+          <h3><i class="fas fa-star"></i> Key Points</h3>
+          <ul>
+            <li>Modern periodic table</li>
+            <li>Periodic trends</li>
+            <li>Atomic and ionic radii</li>
+            <li>Ionization enthalpy</li>
+            <li>Electronegativity</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ch4">
+        <h2><i class="fas fa-link"></i> Chapter 4: Chemical Bonding and Molecular Structure</h2>
+        <p>This chapter covers valence electrons, ionic bond, covalent bond, bond parameters, Lewis structure, polar character of covalent bond, covalent character of ionic bond, valence bond theory, resonance, geometry of covalent molecules, VSEPR theory, concept of hybridization, molecular orbital theory, hydrogen bond.</p>
+        
+        <div class="key-points">
+          <h3><i class="fas fa-star"></i> Key Points</h3>
+          <ul>
+            <li>Ionic and covalent bonding</li>
+            <li>Lewis structures</li>
+            <li>VSEPR theory</li>
+            <li>Hybridization</li>
+            <li>Molecular orbital theory</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ch5">
+        <h2><i class="fas fa-cloud"></i> Chapter 5: States of Matter: Gases and Liquids</h2>
+        <p>This chapter discusses three states of matter, intermolecular interactions, type of bonding, melting and boiling points, gas laws, ideal gas equation, kinetic energy and molecular speeds, liquid state - vapor pressure, viscosity and surface tension.</p>
+        
+        <div class="key-points">
+          <h3><i class="fas fa-star"></i> Key Points</h3>
+          <ul>
+            <li>Gas laws</li>
+            <li>Ideal gas equation</li>
+            <li>Kinetic molecular theory</li>
+            <li>Intermolecular forces</li>
+            <li>Liquid state properties</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ch6">
+        <h2><i class="fas fa-fire"></i> Chapter 6: Thermodynamics</h2>
+        <p>This chapter covers concepts of system, types of systems, surroundings, work, heat, energy, extensive and intensive properties, state functions. First law of thermodynamics, enthalpy, measurement of ΔU and ΔH, Hess's law, entropy and second law of thermodynamics, Gibbs energy.</p>
+        
+        <div class="key-points">
+          <h3><i class="fas fa-star"></i> Key Points</h3>
+          <ul>
+            <li>First law of thermodynamics</li>
+            <li>Enthalpy</li>
+            <li>Hess's law</li>
+            <li>Entropy</li>
+            <li>Gibbs free energy</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ch7">
+        <h2><i class="fas fa-balance-scale"></i> Chapter 7: Equilibrium</h2>
+        <p>This chapter discusses equilibrium in physical and chemical processes, dynamic nature of equilibrium, law of mass action, equilibrium constant, factors affecting equilibrium, ionic equilibrium, acids and bases, buffer solutions, solubility product, common ion effect.</p>
+        
+        <div class="key-points">
+          <h3><i class="fas fa-star"></i> Key Points</h3>
+          <ul>
+            <li>Law of mass action</li>
+            <li>Equilibrium constant</li>
+            <li>Le Chatelier's principle</li>
+            <li>Acid-base equilibria</li>
+            <li>Buffer solutions</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ch8">
+        <h2><i class="fas fa-exchange-alt"></i> Chapter 8: Redox Reactions</h2>
+        <p>This chapter covers concept of oxidation and reduction, redox reactions, oxidation number, balancing redox reactions, applications of redox reactions.</p>
+        
+        <div class="key-points">
+          <h3><i class="fas fa-star"></i> Key Points</h3>
+          <ul>
+            <li>Oxidation and reduction</li>
+            <li>Oxidation numbers</li>
+            <li>Balancing redox reactions</li>
+            <li>Electrochemical cells</li>
+            <li>Applications of redox reactions</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ch9">
+        <h2><i class="fas fa-water"></i> Chapter 9: Hydrogen</h2>
+        <p>This chapter discusses position of hydrogen in periodic table, occurrence, isotopes, preparation, properties and uses of hydrogen, hydrides, water, hydrogen peroxide, hydrogen as a fuel.</p>
+        
+        <div class="key-points">
+          <h3><i class="fas fa-star"></i> Key Points</h3>
+          <ul>
+            <li>Position in periodic table</li>
+            <li>Isotopes of hydrogen</li>
+            <li>Preparation and properties</li>
+            <li>Hydrides</li>
+            <li>Hydrogen as fuel</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ch10">
+        <h2><i class="fas fa-cube"></i> Chapter 10: s-Block Elements (Alkali and Alkaline Earth Metals)</h2>
+        <p>This chapter covers group 1 and group 2 elements, electronic configuration, occurrence, anomalous properties of first element of each group, diagonal relationship, trends in properties, preparation and properties of important compounds.</p>
+        
+        <div class="key-points">
+          <h3><i class="fas fa-star"></i> Key Points</h3>
+          <ul>
+            <li>Electronic configuration</li>
+            <li>Anomalous properties</li>
+            <li>Diagonal relationship</li>
+            <li>Trends in properties</li>
+            <li>Important compounds</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ch11">
+        <h2><i class="fas fa-cubes"></i> Chapter 11: p-Block Elements</h2>
+        <p>This chapter discusses group 13 to group 18 elements, general introduction, electronic configuration, occurrence, variation of properties, oxidation states, trends in chemical reactivity, anomalous properties of first element of the group.</p>
+        
+        <div class="key-points">
+          <h3><i class="fas fa-star"></i> Key Points</h3>
+          <ul>
+            <li>Group 13-18 elements</li>
+            <li>Electronic configuration</li>
+            <li>Oxidation states</li>
+            <li>Chemical reactivity trends</li>
+            <li>Anomalous properties</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ch12">
+        <h2><i class="fas fa-molecule"></i> Chapter 12: Organic Chemistry - Some Basic Principles</h2>
+        <p>This chapter covers general introduction, methods of purification, qualitative and quantitative analysis, classification and IUPAC nomenclature of organic compounds, electronic displacements, homolytic and heterolytic fission, types of reactions.</p>
+        
+        <div class="key-points">
+          <h3><i class="fas fa-star"></i> Key Points</h3>
+          <ul>
+            <li>Purification methods</li>
+            <li>IUPAC nomenclature</li>
+            <li>Electronic displacements</li>
+            <li>Types of reactions</li>
+            <li>Isomerism</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ch13">
+        <h2><i class="fas fa-oil-well"></i> Chapter 13: Hydrocarbons</h2>
+        <p>This chapter discusses classification of hydrocarbons, alkanes, alkenes, alkynes, aromatic hydrocarbons, isomerism, preparation, properties and reactions.</p>
+        
+        <div class="key-points">
+          <h3><i class="fas fa-star"></i> Key Points</h3>
+          <ul>
+            <li>Alkanes, alkenes, alkynes</li>
+            <li>Aromatic hydrocarbons</li>
+            <li>Isomerism</li>
+            <li>Preparation methods</li>
+            <li>Chemical reactions</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ch14">
+        <h2><i class="fas fa-leaf"></i> Chapter 14: Environmental Chemistry</h2>
+        <p>This chapter covers environmental pollution - air, water and soil pollution, chemical reactions in atmosphere, ozone depletion, acid rain, greenhouse effect and global warming.</p>
+        
+        <div class="key-points">
+          <h3><i class="fas fa-star"></i> Key Points</h3>
+          <ul>
+            <li>Environmental pollution</li>
+            <li>Ozone depletion</li>
+            <li>Acid rain</li>
+            <li>Greenhouse effect</li>
+            <li>Green chemistry</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ch15">
+        <h2><i class="fas fa-cube"></i> Chapter 15: Solid State</h2>
+        <p>This chapter discusses classification of solids based on different binding forces, crystal lattices and unit cells, packing efficiency, calculations involving unit cell dimensions, point defects, electrical and magnetic properties.</p>
+        
+        <div class="key-points">
+          <h3><i class="fas fa-star"></i> Key Points</h3>
+          <ul>
+            <li>Classification of solids</li>
+            <li>Crystal lattices</li>
+            <li>Unit cells</li>
+            <li>Packing efficiency</li>
+            <li>Electrical properties</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ch16">
+        <h2><i class="fas fa-tint"></i> Chapter 16: Solutions</h2>
+        <p>This chapter covers types of solutions, expression of concentration of solutions, solubility, colligative properties, determination of molecular masses, abnormal molecular mass, van't Hoff factor.</p>
+        
+        <div class="key-points">
+          <h3><i class="fas fa-star"></i> Key Points</h3>
+          <ul>
+            <li>Types of solutions</li>
+            <li>Concentration units</li>
+            <li>Colligative properties</li>
+            <li>Molecular mass determination</li>
+            <li>van't Hoff factor</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ch17">
+        <h2><i class="fas fa-battery-full"></i> Chapter 17: Electrochemistry</h2>
+        <p>This chapter discusses redox reactions, conductance in electrolytic solutions, specific and molar conductivity, Kohlrausch's Law, electrolysis, galvanic cells, electrode potential, Nernst equation, batteries, fuel cells, corrosion.</p>
+        
+        <div class="key-points">
+          <h3><i class="fas fa-star"></i> Key Points</h3>
+          <ul>
+            <li>Redox reactions</li>
+            <li>Conductivity</li>
+            <li>Electrolysis</li>
+            <li>Galvanic cells</li>
+            <li>Nernst equation</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ch18">
+        <h2><i class="fas fa-gauge-high"></i> Chapter 18: Chemical Kinetics</h2>
+        <p>This chapter covers rate of reaction, factors affecting rate of reaction, order and molecularity of reaction, integrated rate equations, half-life, temperature dependence of rate constant, Arrhenius equation, collision theory.</p>
+        
+        <div class="key-points">
+          <h3><i class="fas fa-star"></i> Key Points</h3>
+          <ul>
+            <li>Rate of reaction</li>
+            <li>Order and molecularity</li>
+            <li>Integrated rate equations</li>
+            <li>Arrhenius equation</li>
+            <li>Collision theory</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ch19">
+        <h2><i class="fas fa-border-all"></i> Chapter 19: Surface Chemistry</h2>
+        <p>This chapter discusses adsorption, types of adsorption, catalysis, colloids, classification of colloids, emulsions, micelles.</p>
+        
+        <div class="key-points">
+          <h3><i class="fas fa-star"></i> Key Points</h3>
+          <ul>
+            <li>Adsorption</li>
+            <li>Catalysis</li>
+            <li>Colloids</li>
+            <li>Emulsions</li>
+            <li>Micelles</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ch20">
+        <h2><i class="fas fa-cubes"></i> Chapter 20: p-Block Elements II</h2>
+        <p>This chapter covers group 15, 16, 17 and 18 elements, electronic configuration, occurrence, oxidation states, trends in properties, preparation and properties of important compounds.</p>
+        
+        <div class="key-points">
+          <h3><i class="fas fa-star"></i> Key Points</h3>
+          <ul>
+            <li>Group 15-18 elements</li>
+            <li>Oxidation states</li>
+            <li>Trends in properties</li>
+            <li>Important compounds</li>
+            <li>Uses of elements</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ch21">
+        <h2><i class="fas fa-cube"></i> Chapter 21: d and f Block Elements</h2>
+        <p>This chapter discusses position in periodic table, electronic configuration, occurrence, general properties, trends in properties, preparation and properties of important compounds, lanthanoids and actinoids.</p>
+        
+        <div class="key-points">
+          <h3><i class="fas fa-star"></i> Key Points</h3>
+          <ul>
+            <li>Position in periodic table</li>
+            <li>Electronic configuration</li>
+            <li>General properties</li>
+            <li>Lanthanoids and actinoids</li>
+            <li>Important compounds</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ch22">
+        <h2><i class="fas fa-ring"></i> Chapter 22: Coordination Compounds</h2>
+        <p>This chapter covers coordination compounds, Werner's theory, ligands, coordination number, nomenclature, isomerism, bonding, stability, importance and applications.</p>
+        
+        <div class="key-points">
+          <h3><i class="fas fa-star"></i> Key Points</h3>
+          <ul>
+            <li>Werner's theory</li>
+            <li>Ligands and coordination number</li>
+            <li>Nomenclature</li>
+            <li>Isomerism</li>
+            <li>Bonding in coordination compounds</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ch23">
+        <h2><i class="fas fa-pills"></i> Chapter 23: Haloalkanes and Haloarenes</h2>
+        <p>This chapter discusses classification, nomenclature, nature of C-X bond, methods of preparation, physical and chemical properties, uses, environmental effects.</p>
+        
+        <div class="key-points">
+          <h3><i class="fas fa-star"></i> Key Points</h3>
+          <ul>
+            <li>Classification and nomenclature</li>
+            <li>Nature of C-X bond</li>
+            <li>Preparation methods</li>
+            <li>Chemical reactions</li>
+            <li>Environmental effects</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ch24">
+        <h2><i class="fas fa-wine-bottle"></i> Chapter 24: Alcohols, Phenols and Ethers</h2>
+        <p>This chapter covers classification, nomenclature, methods of preparation, physical and chemical properties, uses of alcohols, phenols and ethers.</p>
+        
+        <div class="key-points">
+          <h3><i class="fas fa-star"></i> Key Points</h3>
+          <ul>
+            <li>Classification and nomenclature</li>
+            <li>Preparation methods</li>
+            <li>Physical properties</li>
+            <li>Chemical reactions</li>
+            <li>Uses of compounds</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ch25">
+        <h2><i class="fas fa-dna"></i> Chapter 25: Biomolecules</h2>
+        <p>This chapter discusses carbohydrates, proteins, enzymes, vitamins, nucleic acids, hormones, their classification, structure, functions and importance in biological systems.</p>
+        
+        <div class="key-points">
+          <h3><i class="fas fa-star"></i> Key Points</h3>
+          <ul>
+            <li>Carbohydrates</li>
+            <li>Proteins and enzymes</li>
+            <li>Vitamins</li>
+            <li>Nucleic acids</li>
+            <li>Hormones</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <a href="#" class="scroll-top" id="scrollTop">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+  
+  <footer>
+    <p>© Bimalism | NEET Chemistry Summary</p>
+  </footer>
+
+  <script>
+    // Back button functionality
+    document.getElementById('backButton').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.history.back();
+    });
+    
+    // Scroll to top functionality
+    const scrollButton = document.getElementById('scrollTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollButton.style.display = 'flex';
+      } else {
+        scrollButton.style.display = 'none';
+      }
+    });
+    
+    scrollButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    // Update active navigation link on scroll
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (window.pageYOffset >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').substring(1) === current) {
+          link.classList.add('active');
+        }
+      });
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 100,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
