@@ -3,96 +3,94 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bimalism - Dashboard</title>
+  <title>Bimalism - Entrance Hub</title>
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #fceabb, #f8b500);
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #f5d142, #f39c12);
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       overflow: hidden;
     }
-
     .container {
       text-align: center;
-      background: #fff;
-      padding: 50px;
-      border-radius: 25px;
-      box-shadow: 0px 8px 30px rgba(0,0,0,0.2);
-      animation: fadeIn 2s ease-in-out;
+      color: #fff;
+      animation: fadeIn 1.5s ease-in-out;
     }
-
-    .teacher-photo {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 5px solid #ffcc00;
-      box-shadow: 0px 6px 20px rgba(0,0,0,0.3);
-      margin-bottom: 20px;
-      animation: fadeSlide 2s ease;
-    }
-
     h1 {
-      font-size: 2.8rem;
-      margin-bottom: 15px;
-      background: linear-gradient(90deg, #ff8800, #ffcc00);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: glow 2s infinite alternate;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+      animation: slideDown 1.2s ease-in-out;
     }
-
     p {
       font-size: 1.2rem;
-      margin-bottom: 30px;
-      color: #444;
-      animation: fadeSlide 3s ease;
+      margin-bottom: 40px;
+      opacity: 0.9;
     }
-
-    .go-btn {
-      padding: 12px 30px;
-      font-size: 1.2rem;
-      background: linear-gradient(90deg, #ffcc00, #ff8800);
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+    .btn {
+      background: #fff;
+      color: #f39c12;
+      padding: 15px 40px;
       border: none;
-      border-radius: 30px;
-      color: #fff;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: 600;
       cursor: pointer;
-      box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
-      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, background 0.3s ease;
+      animation: popIn 1.5s ease-in-out;
     }
-
-    .go-btn:hover {
+    .btn:hover {
       transform: scale(1.1);
-      box-shadow: 0px 8px 25px rgba(0,0,0,0.3);
+      background: #f1c40f;
+      color: #fff;
     }
 
+    /* Animations */
     @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
-
-    @keyframes fadeSlide {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes slideDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
-
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #ff8800, 0 0 20px #ffcc00; }
-      to { text-shadow: 0 0 20px #ffaa00, 0 0 30px #ffd633; }
+    @keyframes popIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    footer {
+      margin-top: 50px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      animation: fadeIn 2s ease-in-out;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Sir's Photo -->
-    <img src=""C:\Users\User\Desktop\bimalism.html\sanapala sir photo.png"" alt="Sir's Photo" class="teacher-photo">
-
-    <h1>Bimalism</h1>
-    <p>Done by Aalif and Dharunesh<br>Inspired by Mr. Kageshwararao<br>— 9th Grade Achariya</p>
-    <button class="go-btn" onclick="window.location.href='index.html'">Go</button>
+    <h1>Welcome to Bimalism</h1>
+    <p>Select Your Exam to Begin Your Journey</p>
+    <div class="buttons">
+      <button class="btn" onclick="location.href='neet.html'">NEET</button>
+      <button class="btn" onclick="location.href='jee.html'">JEE</button>
+    </div>
+    <footer>
+      Made with ❤️ by Aalif & Dharunesh | Inspired by Mr. Kageshwararao
+    </footer>
   </div>
 </body>
 </html>
