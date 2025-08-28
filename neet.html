@@ -1,0 +1,1849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEET Complete Syllabus</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --primary: #2c3e50;
+  --secondary: #3498db;
+  --accent: #e74c3c;
+  --light: #ecf0f1;
+  --dark: #2c3e50;
+  --success: #2ecc71;
+  --warning: #f39c12;
+  --physics: #3498db;
+  --chemistry: #e74c3c;
+  --biology: #2ecc71;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: var(--dark);
+  line-height: 1.6;
+  padding-bottom: 60px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header Styles */
+header {
+  background: var(--primary);
+  color: white;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+.logo i {
+  margin-right: 10px;
+  color: var(--accent);
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav li {
+  margin-left: 25px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+nav a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Back Button */
+.back-btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+}
+
+.back-btn i {
+  margin-right: 8px;
+}
+
+.back-btn:hover {
+  background: #c0392b;
+  transform: translateY(-2px);
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 40px 0;
+  background: white;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Subject Cards */
+.subject {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 30px 0;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.subject:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.subject-header {
+  padding: 20px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.physics-header {
+  background: var(--physics);
+}
+
+.chemistry-header {
+  background: var(--chemistry);
+}
+
+.biology-header {
+  background: var(--biology);
+}
+
+.subject-header h2 {
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+}
+
+.subject-header h2 i {
+  margin-right: 10px;
+}
+
+.subject-content {
+  padding: 20px;
+}
+
+/* Chapter Styles */
+.chapter {
+  margin-bottom: 15px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.chapter-header {
+  background: #f8f9fa;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.chapter-header:hover {
+  background: #e9ecef;
+}
+
+.chapter-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.chapter-content {
+  padding: 0 15px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.chapter-content.active {
+  max-height: 500px;
+  padding: 15px;
+}
+
+.chapter-summary {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.chapter-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Button Styles */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.btn i {
+  margin-right: 8px;
+}
+
+.btn-primary {
+  background: var(--secondary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+}
+
+.btn-success {
+  background: var(--success);
+  color: white;
+}
+
+.btn-success:hover {
+  background: #27ae60;
+  transform: translateY(-2px);
+}
+
+.btn-warning {
+  background: var(--warning);
+  color: white;
+}
+
+.btn-warning:hover {
+  background: #e67e22;
+  transform: translateY(-2px);
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 0.9rem;
+}
+
+/* Subject Actions */
+.subject-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--primary);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.back-to-top.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background: var(--secondary);
+  transform: translateY(-5px);
+}
+
+/* Download Section */
+.download-section {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.download-btn {
+  background: var(--primary);
+  color: white;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+}
+
+.download-btn:hover {
+  background: #1a252f;
+  transform: translateY(-3px);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  color: #7f8c8d;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  nav li {
+    margin: 5px 10px;
+  }
+  
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .subject-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .chapter-actions {
+    flex-direction: column;
+  }
+  
+  .subject-actions {
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="container header-content">
+    <div class="logo">
+      <i class="fas fa-graduation-cap"></i>
+      <span>NEET Prep Pro</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#physics"><i class="fas fa-atom"></i> Physics</a></li>
+        <li><a href="#chemistry"><i class="fas fa-flask"></i> Chemistry</a></li>
+        <li><a href="#biology"><i class="fas fa-dna"></i> Biology</a></li>
+      </ul>
+    </nav>
+    <button class="back-btn" onclick="location.href='index.html'">
+      <i class="fas fa-arrow-left"></i> Back to Home
+    </button>
+  </div>
+</header>
+
+<div class="container">
+  <div class="hero">
+    <h1>NEET Complete Syllabus</h1>
+    <p>Your comprehensive guide to Physics, Chemistry, and Biology syllabus for NEET examination. Access chapter summaries and quizzes for each topic.</p>
+  </div>
+
+  <div class="download-section">
+    <button class="btn download-btn" onclick="downloadPDF()">
+      <i class="fas fa-download"></i> Download Full Syllabus as PDF
+    </button>
+  </div>
+
+  <div class="subject" id="physics">
+    <div class="subject-header physics-header">
+      <h2><i class="fas fa-atom"></i> Physics</h2>
+      <div class="subject-actions">
+        <button class="btn btn-primary" onclick="location.href='physics-summary.html'">
+          <i class="fas fa-file-alt"></i> Full Summary
+        </button>
+        <button class="btn btn-success" onclick="location.href='py-quiz.html'">
+          <i class="fas fa-brain"></i> Physics Quiz
+        </button>
+      </div>
+    </div>
+    <div class="subject-content">
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 1: Physical World</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Scope, laws, applications of physics.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='neet-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='py-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 2: Units & Measurements</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Units, dimensions, significant figures, errors.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='neet-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='py-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 3: Motion in Straight Line</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Velocity, acceleration, equations of motion.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='neet-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='py-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 4: Motion in Plane</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Projectile, circular motion, relative velocity.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='neet-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='py-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 5: Laws of Motion</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Newton's laws, friction, dynamics.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='neet-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='py-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 6: Work, Energy, Power</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Work, kinetic & potential energy, power, conservation.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='neet-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='py-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 7: System of Particles & Rotational Motion</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Center of mass, torque, angular momentum, inertia.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='neet-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='py-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 8: Gravitation</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Universal gravitation, escape velocity, satellites.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='neet-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='py-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 9: Mechanical Properties of Solids</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Stress, strain, elastic modulus, Hooke's law.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='neet-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='py-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 10: Mechanical Properties of Fluids</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Pressure, Bernoulli, viscosity, surface tension.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='neet-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='py-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 11: Thermal Properties of Matter</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Heat, temperature, expansion, calorimetry.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='neet-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='py-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 12: Thermodynamics</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Laws, heat engines, entropy, refrigeration.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='neet-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='py-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 13: Kinetic Theory</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Molecular theory, pressure, gas laws, energy.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='neet-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='py-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 14: Oscillations</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            SHM, damped and forced oscillations, energy.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='neet-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='py-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 15: Waves</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Mechanical, sound waves, Doppler, resonance.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='neet-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='py-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 16: Electrostatics</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Charges, Coulomb, field, potential, capacitance.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='neet-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='py-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 17: Current Electricity</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Ohm's law, resistivity, circuits, Kirchhoff laws.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='neet-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='py-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 18: Magnetic Effects of Current & Magnetism</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Ampere, Biot-Savart, solenoid, magnetism.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='neet-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='py-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 19: Electromagnetic Induction & AC</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Faraday, Lenz, AC circuits, transformer.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='neet-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='py-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 20: Electromagnetic Waves</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Maxwell's equations, EM spectrum, applications.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='neet-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='py-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subject" id="chemistry">
+    <div class="subject-header chemistry-header">
+      <h2><i class="fas fa-flask"></i> Chemistry</h2>
+      <div class="subject-actions">
+        <button class="btn btn-primary" onclick="location.href='chem-summary.html'">
+          <i class="fas fa-file-alt"></i> Full Summary
+        </button>
+        <button class="btn btn-success" onclick="location.href='chem-quiz.html'">
+          <i class="fas fa-brain"></i> Chemistry Quiz
+        </button>
+      </div>
+    </div>
+    <div class="subject-content">
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 1: Some Basic Concepts</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Mole, laws, stoichiometry.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='chem-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='chem-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 2: Structure of Atom</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Atomic models, quantum numbers, configuration.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='chem-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='chem-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 3: Periodicity</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Periodic table trends, groups, periods.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='chem-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='chem-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 4: Chemical Bonding</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Ionic, covalent, metallic bonds, VSEPR.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='chem-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='chem-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 5: States of Matter</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Solid, liquid, gas, phase changes.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='chem-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='chem-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 6: Thermodynamics</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Laws, enthalpy, spontaneity, entropy.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='chem-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='chem-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 7: Equilibrium</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Chemical, ionic equilibrium, Le Chatelier principle.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='chem-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='chem-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 8: Redox & Electrochemistry</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Oxidation-reduction, cells, electrodes.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='chem-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='chem-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 9: Hydrogen & s-Block</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Properties of H, alkali, alkaline earth metals.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='chem-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='chem-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 10: p-Block Elements</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Groups 13–18, trends, reactions.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='chem-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='chem-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 11: d-Block Elements</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Transition metals, complexes, properties.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='chem-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='chem-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 12: f-Block Elements</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Lanthanides, actinides, oxidation states.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='chem-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='chem-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 13: Organic Chemistry Basics</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Nomenclature, isomerism, preparation.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='chem-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='chem-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 14: Hydrocarbons</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Alkanes, alkenes, alkynes, aromatics.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='chem-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='chem-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 15: Haloalkanes & Haloarenes</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Preparation, reactions, uses.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='chem-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='chem-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 16: Alcohols, Phenols & Ethers</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Structure, properties, reactions, preparation.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='chem-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='chem-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 17: Aldehydes, Ketones & Carboxylic Acids</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Functional groups, properties, preparation.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='chem-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='chem-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 18: Amines & Biomolecules</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Amines, amino acids, proteins, nucleic acids.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='chem-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='chem-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 19: Polymers & Chemistry in Life</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Polymers, applications, environment-friendly chemistry.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='chem-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='chem-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 20: Coordination Compounds</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Ligands, coordination number, Werner theory, applications.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='chem-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='chem-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subject" id="biology">
+    <div class="subject-header biology-header">
+      <h2><i class="fas fa-dna"></i> Biology</h2>
+      <div class="subject-actions">
+        <button class="btn btn-primary" onclick="location.href='bio-summary.html'">
+          <i class="fas fa-file-alt"></i> Full Summary
+        </button>
+        <button class="btn btn-success" onclick="location.href='bio-quiz.html'">
+          <i class="fas fa-brain"></i> Biology Quiz
+        </button>
+      </div>
+    </div>
+    <div class="subject-content">
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 1: The Cell</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Cell structure, organelles, division, cell theory.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='bio-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='bio-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 2: Biomolecules</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Carbs, proteins, lipids, nucleic acids, enzymes.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='bio-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='bio-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 3: Cell Cycle & Division</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Mitosis, meiosis, regulation.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='bio-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='bio-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 4: Plant Anatomy</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Tissues, tissue systems, secondary growth.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='bio-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='bio-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 5: Plant Physiology</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Photosynthesis, respiration, transport, mineral nutrition.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='bio-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='bio-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 6: Human Physiology</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Digestive, circulatory, respiratory, excretory, reproductive, nervous system.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='bio-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='bio-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 7: Diversity in Living World</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Taxonomy, classification, diversity.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='bio-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='bio-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 8: Structural Organization in Animals</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Tissues, organs, systems in animals.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='bio-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='bio-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 9: Animal Kingdom</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Classification, characteristics of phyla.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='bio-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='bio-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 10: Reproduction in Organisms</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Asexual, sexual reproduction, life cycles.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='bio-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='bio-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 11: Sexual Reproduction in Flowering Plants</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Pollination, fertilization, double fertilization.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='bio-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='bio-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 12: Human Reproduction</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Male/female reproductive system, gametogenesis.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='bio-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='bio-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 13: Reproductive Health</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Family planning, STDs, infertility.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='bio-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='bio-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 14: Principles of Inheritance</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Mendel’s laws, linkage, recombination.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='bio-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='bio-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 15: Molecular Basis of Inheritance</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            DNA, RNA, genetic code, replication.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='bio-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='bio-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 16: Evolution</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Origin of life, natural selection, human evolution.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='bio-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='bio-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 17: Health & Diseases</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Immunity, pathogens, diseases, vaccines.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='bio-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='bio-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 18: Strategies for Enhancement</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Plant breeding, animal husbandry, biotechnology.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='bio-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='bio-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 19: Microbes in Human Welfare</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Fermentation, antibiotics, biofertilizers.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='bio-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='bio-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 20: Biotechnology Principles</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Recombinant DNA, PCR, gene cloning.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='bio-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='bio-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 21: Biotechnology Applications</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Transgenics, GMOs, medical applications.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='bio-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='bio-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 22: Organisms & Population</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Population dynamics, interactions, adaptations.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='bio-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='bio-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 23: Ecosystem</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Biotic/abiotic factors, food chains, energy flow.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='bio-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='bio-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 24: Biodiversity & Conservation</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Species diversity, hotspots, conservation strategies.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='bio-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='bio-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-header" onclick="toggleChapter(this)">
+          <span class="chapter-title">Ch 25: Environmental Issues</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-summary">
+            Pollution, global warming, ozone depletion.
+          </div>
+          <div class="chapter-actions">
+            <button class="btn btn-primary btn-sm" onclick="location.href='bio-summary.html'">
+              <i class="fas fa-book"></i> Summary
+            </button>
+            <button class="btn btn-success btn-sm" onclick="location.href='bio-quiz.html'">
+              <i class="fas fa-question-circle"></i> Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="back-to-top" onclick="scrollToTop()">
+  <i class="fas fa-arrow-up"></i>
+</div>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2023 NEET Prep Pro. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+// Toggle chapter content
+function toggleChapter(element) {
+  const content = element.nextElementSibling;
+  const icon = element.querySelector('i');
+  
+  content.classList.toggle('active');
+  
+  if (content.classList.contains('active')) {
+    icon.classList.remove('fa-chevron-down');
+    icon.classList.add('fa-chevron-up');
+  } else {
+    icon.classList.remove('fa-chevron-up');
+    icon.classList.add('fa-chevron-down');
+  }
+}
+
+// Back to top functionality
+window.addEventListener('scroll', function() {
+  const backToTop = document.querySelector('.back-to-top');
+  if (window.pageYOffset > 300) {
+    backToTop.classList.add('active');
+  } else {
+    backToTop.classList.remove('active');
+  }
+});
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+
+// PDF download function
+function downloadPDF() {
+  const element = document.getElementById('content');
+  const options = {
+    margin: 1,
+    filename: 'NEET_Complete_Syllabus.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+  };
+  
+  html2pdf().set(options).from(element).save();
+}
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('nav a').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href');
+    const targetElement = document.querySelector(targetId);
+    
+    window.scrollTo({
+      top: targetElement.offsetTop - 80,
+      behavior: 'smooth'
+    });
+  });
+});
+</script>
+</body>
+</html>
